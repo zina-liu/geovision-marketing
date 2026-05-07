@@ -113,12 +113,29 @@
         .btn-primary { background: var(--dark-navy); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; }
 
         @media (max-width: 720px) {
+            body { display: block; overflow: auto; }
+            .sidebar { width: 100%; height: auto; padding: 24px 20px; }
+            .brand-logo { width: 128px; margin-bottom: 14px; }
+            .logo { margin-bottom: 24px; }
+            .nav-group { margin-bottom: 20px; }
+            .nav-label { padding-left: 0; }
+            .nav-item { padding: 11px 12px; }
+            .language-switch { margin-top: 8px; padding-left: 0; }
+            .main-container { height: auto; min-height: auto; overflow: visible; padding: 32px 20px; }
+            .header { margin-bottom: 24px; }
+            .page-title { font-size: 28px; letter-spacing: 0; }
+            .card, .monthly-section, .workspace-section { padding: 22px 18px; border-radius: 14px; }
+            .list-row { align-items: flex-start; gap: 14px; flex-direction: column; }
             .event-card { grid-template-columns: 64px 1fr; gap: 16px; align-items: flex-start; }
             .event-date { font-size: 22px; text-align: left; }
             .event-status { grid-column: 2; justify-self: start; }
+            .event-title, .workspace-title { font-size: 16px; }
+            .event-link { overflow-wrap: anywhere; }
             .workspace-card { grid-template-columns: 64px 1fr; gap: 16px; align-items: flex-start; }
             .workspace-label { text-align: left; }
             .workspace-card .btn-outline { grid-column: 2; justify-self: start; }
+            .btn-outline, .btn-primary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+            input[type="password"] { width: 100%; max-width: 280px; }
         }
     </style>
 </head>
