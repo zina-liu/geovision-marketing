@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Case Study | GeoVision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --dark-navy: #0f172a;
+            --bg-light: #f8fafc;
+            --border-gray: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 48px 20px 80px;
+        }
+
+        .page-wrap {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .form-header {
+            margin-bottom: 40px;
+        }
+
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .brand-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            letter-spacing: -0.3px;
+        }
+
+        .form-title {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--dark-navy);
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        /* Section */
+        .form-section {
+            background: white;
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        /* Field */
+        .field {
+            margin-bottom: 28px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .required-star {
+            color: #ef4444;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .optional-badge {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 2px 7px;
+            border-radius: 999px;
+        }
+
+        .field-cue {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .field-cue strong {
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .warning-cue {
+            font-size: 13px;
+            color: #b45309;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            border-radius: 10px;
+            padding: 12px 14px;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            outline: none;
+            resize: vertical;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: var(--primary-blue);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        textarea { min-height: 120px; }
+        textarea.tall { min-height: 160px; }
+
+        /* Two-col grid for short fields */
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Submit area */
+        .submit-area {
+            background: white;
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .submit-note {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 360px;
+        }
+
+        .btn-submit {
+            background: var(--dark-navy);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.15s;
+            flex-shrink: 0;
+        }
+
+        .btn-submit:hover { background: #1e3a6e; }
+        .btn-submit:active { background: #172d57; }
+
+        /* Success state */
+        .success-message {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success-message h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            font-size: 14px;
+            color: #047857;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 32px 16px 60px; }
+            .form-title { font-size: 24px; }
+            .form-section { padding: 24px 20px; }
+            .field-row { grid-template-columns: 1fr; }
+            .submit-area { flex-direction: column; align-items: stretch; }
+            .btn-submit { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <div class="form-header">
+        <h1 class="form-title">Submit a Case Study</h1>
+        <p class="form-subtitle">Fill in the project details below. The more specific you are, the faster we can turn it into a published case study. Fields marked with * cannot be left blank. Without them, we cannot write the story.</p>
+    </div>
+
+    <form id="case-study-form" action="https://formspree.io/f/maqknabb" method="POST">
+
+        <!-- Section 1: Basic Info -->
+        <div class="form-section">
+            <div class="section-label">01: Basic Information</div>
+
+            <div class="field">
+                <label class="field-label" for="project-name">
+                    Project Name / Customer
+                    <span class="required-star">*</span>
+                </label>
+                <input type="text" id="project-name" name="project_name" required
+                    placeholder="e.g. Northgate Logistics Park">
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label class="field-label" for="location">
+                        Country / Location
+                        <span class="required-star">*</span>
+                    </label>
+                    <input type="text" id="location" name="location" required
+                        placeholder="e.g. Oslo, Norway">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="industry">
+                        Industry / Sector
+                        <span class="required-star">*</span>
+                    </label>
+                    <input type="text" id="industry" name="industry" required
+                        placeholder="e.g. Transportation">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: The Story -->
+        <div class="form-section">
+            <div class="section-label">02: The Story</div>
+
+            <div class="field">
+                <label class="field-label" for="background">
+                    What was the customer's situation before?
+                    <span class="required-star">*</span>
+                </label>
+                <p class="field-cue">Describe the customer and what they were dealing with before the project. Who are they, where are they, what kind of system did they have, and why was it no longer working?</p>
+                <p class="field-cue"><strong>Example:</strong> The facility had been running aging analog cameras across 6 warehouse buildings. Recording equipment was scattered across different server rooms with no centralized management. As the fleet aged, image quality declined and maintenance became increasingly difficult.</p>
+                <textarea class="tall" id="background" name="background" required
+                    placeholder="Describe the customer's situation before the project..."></textarea>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="challenges">
+                    What problems did they need to solve?
+                    <span class="required-star">*</span>
+                </label>
+                <p class="field-cue">List 2 to 4 specific problems. Avoid vague phrases like "had security issues." Say exactly what the issue was.</p>
+                <p class="field-cue"><strong>Example:</strong><br>
+                1. Aging cameras delivering poor image quality across all sites.<br>
+                2. No centralized recording. Staff had to visit each building to review footage.<br>
+                3. Upgrades had to happen without interrupting live security operations.</p>
+                
+                <textarea id="challenges" name="challenges" required
+                    placeholder="List 2–4 specific problems the customer faced..."></textarea>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="products">
+                    Products Used: model and quantity
+                    <span class="required-star">*</span>
+                </label>
+                <p class="field-cue">List every product used, with the exact model number and quantity.</p>
+                <p class="field-cue"><strong>Example:</strong> GV-Hot Swap Server × 8, GV-GEBF4802-2F × 150, GV-TBL4810 × 60, GV-VMS V18 × 1</p>
+                
+                <textarea id="products" name="products" required
+                    placeholder="GV-[model] × [qty], GV-[model] × [qty]..."></textarea>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="deployment">
+                    How were the products used?
+                    <span class="required-star">*</span>
+                </label>
+                <p class="field-cue">For each product, explain where it was installed and what it did. This is the core of the case study. Without this section, nothing else can be written.</p>
+                <p class="field-cue"><strong>Example:</strong> GV-Hot Swap Servers were installed in two data centers to replace recording equipment scattered across building cupboards. 200+ IP cameras were deployed in phases across all 9 campuses, with outdoor models covering entrances and indoor models covering corridors.</p>
+                <textarea class="tall" id="deployment" name="deployment" required
+                    placeholder="Describe where and how each product was deployed..."></textarea>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="results">
+                    What changed after the deployment?
+                    <span class="optional-badge">Optional</span>
+                </label>
+                <p class="field-cue">List 2 to 4 outcomes. Numbers are great, but specific descriptions work too. Avoid generic phrases like "improved efficiency."</p>
+                <p class="field-cue"><strong>Example:</strong><br>
+                1. Image quality improved significantly across all 6 buildings.<br>
+                2. Recording consolidated from scattered server rooms into one managed location.<br>
+                3. Motion-based detection replaced 24/7 recording, making incident review faster.</p>
+                <textarea id="results" name="results"
+                    placeholder="List what improved or changed after the deployment..."></textarea>
+            </div>
+        </div>
+
+        <!-- Section 3: Optional -->
+        <div class="form-section">
+            <div class="section-label">03: Optional</div>
+
+            <div class="field">
+                <label class="field-label" for="quote">
+                    Customer Quote
+                    <span class="optional-badge">Optional</span>
+                </label>
+                <p class="field-cue">A direct quote from the customer or end user, with their name and job title. This makes the case study significantly more credible.</p>
+                <textarea id="quote" name="customer_quote"
+                    placeholder="Quote text here. Name, Job Title, Company"></textarea>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="partner">
+                    Project Partner / SI
+                    <span class="optional-badge">Optional</span>
+                </label>
+                <p class="field-cue">The system integrator or partner who delivered the project. If the name cannot be published, write "Confidential" and we will omit it.</p>
+                <input type="text" id="partner" name="project_partner"
+                    placeholder="e.g. USAVision Systems (or Confidential)">
+            </div>
+        </div>
+
+        <!-- Section 4: Submitter -->
+        <div class="form-section">
+            <div class="section-label">04: Your Details</div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label class="field-label" for="submitter-name">
+                        Your Name
+                        <span class="required-star">*</span>
+                    </label>
+                    <input type="text" id="submitter-name" name="submitter_name" required
+                        placeholder="Your name">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="submitter-email">
+                        Your Email
+                        <span class="required-star">*</span>
+                    </label>
+                    <input type="email" id="submitter-email" name="submitter_email" required
+                        placeholder="your@geovision.com.tw">
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-area">
+            <p class="submit-note">Once submitted, the marketing department will review the details and follow up if anything is missing. We write the case study. You just provide the facts.</p>
+            <button type="submit" class="btn-submit">Submit Case Study</button>
+        </div>
+
+    </form>
+
+    <div class="success-message" id="success-msg">
+        <h2>Submitted. Thank you.</h2>
+        <p>We will review your case study details and reach out if we need anything else.</p>
+    </div>
+
+</div>
+
+<script>
+    const form = document.getElementById('case-study-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('.btn-submit');
+        btn.textContent = 'Submitting...';
+        btn.disabled = true;
+
+        const data = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+            } else {
+                btn.textContent = 'Submit failed. Please try again.';
+                btn.disabled = false;
+            }
+        } catch (err) {
+            btn.textContent = 'Submit failed. Please try again.';
+            btn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>
