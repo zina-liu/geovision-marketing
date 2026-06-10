@@ -12,9 +12,10 @@
         <img src="assets/geovision-logo.png" alt="GeoVision" />
       </a>
       <nav class="nav" aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#viewers">Viewers</a>
         <a href="#workflow">Workflow</a>
         <a href="#use-cases">Use Cases</a>
-        <a href="#platform">Platform</a>
       </nav>
       <a class="header-cta" href="#contact">Request a Demo</a>
     </header>
@@ -125,6 +126,102 @@
               </p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section viewers" id="viewers">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Product core</p>
+          <h2>Two Viewer Roles for Verified Event Response</h2>
+          <p>
+            Operator Viewer and Supervisor Viewer separate first-line verification from supervisory
+            review, so every event can move from alert to decision with the right level of control.
+          </p>
+        </div>
+
+        <div class="viewer-grid">
+          <article class="viewer-panel operator-panel">
+            <div class="viewer-copy">
+              <p class="case-kicker">Operator Viewer</p>
+              <h3>Verify the event before it becomes a response.</h3>
+              <p>
+                Operators review live event evidence, check the snapshot and event details, then
+                close routine alerts or escalate verified incidents for supervisor handling.
+              </p>
+              <div class="viewer-points">
+                <span>Event list</span>
+                <span>Video snapshot</span>
+                <span>Handling notes</span>
+                <span>Escalation action</span>
+              </div>
+            </div>
+            <figure class="viewer-screen product-frame">
+              <div class="frame-chrome" aria-hidden="true">
+                <strong>GV-Operator Viewer</strong>
+                <span>Event Report</span>
+                <span>Decision</span>
+              </div>
+              <img src="assets/operator.jpg" alt="Operator Viewer event report and verification interface" />
+              <figcaption class="decision-callout">
+                <span>Operator decision</span>
+                <div class="decision-actions" aria-label="Operator event actions">
+                  <strong class="false-action">False Alarm</strong>
+                  <strong class="escalate-action">Escalate to Supervisor</strong>
+                </div>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="viewer-panel supervisor-panel">
+            <div class="viewer-copy">
+              <p class="case-kicker">Supervisor Viewer</p>
+              <h3>Turn verified reports into coordinated follow-up.</h3>
+              <p>
+                Supervisors review operator-submitted reports, confirm event context, and distribute
+                evidence-backed alerts to customer groups or security teams through messaging channels.
+              </p>
+              <div class="viewer-points">
+                <span>Report review</span>
+                <span>Case status</span>
+                <span>Customer notification</span>
+                <span>Team dispatch</span>
+              </div>
+            </div>
+            <div class="supervisor-visual">
+              <figure class="viewer-screen product-frame supervisor-screen">
+                <div class="frame-chrome" aria-hidden="true">
+                  <strong>GV-Supervisor Viewer</strong>
+                  <span>Reviewed Event</span>
+                  <span>Notify</span>
+                </div>
+                <img src="assets/supervisor-intrusion.jpg" alt="Supervisor Viewer intrusion event review interface" />
+              </figure>
+              <div class="telegram-column">
+                <aside class="telegram-preview" aria-label="Telegram notification preview">
+                  <div class="telegram-topbar">
+                    <span class="telegram-avatar">C</span>
+                    <div>
+                      <strong>CVW</strong>
+                      <small>Security Operations</small>
+                    </div>
+                  </div>
+                  <div class="telegram-card">
+                    <div class="telegram-image"></div>
+                    <div class="telegram-message">
+                      <span><strong>Host:</strong> Shopping Mall</span>
+                      <span><strong>Device Name:</strong> Perimeter Wall Camera</span>
+                      <span><strong>Message:</strong> Intrusion Detected</span>
+                      <span><strong>Event Time:</strong> 2026/06/05 00:51:52</span>
+                    </div>
+                  </div>
+                </aside>
+                <div class="telegram-caption">
+                  <strong>Telegram notifications by customer site</strong>
+                  <span>Verified events can be sent to dedicated customer groups and security teams.</span>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
