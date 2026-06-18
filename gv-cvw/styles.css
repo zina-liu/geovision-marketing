@@ -555,6 +555,7 @@ p {
 }
 
 .workflow {
+  padding-bottom: clamp(36px, 4vw, 62px);
   background: #ffffff;
 }
 
