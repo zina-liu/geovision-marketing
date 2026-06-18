@@ -35,6 +35,27 @@
             margin-bottom: 40px;
         }
 
+        .lang-switch {
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .lang-switch a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .lang-switch a.active {
+            color: var(--dark-navy);
+        }
+
+        .lang-switch span {
+            margin: 0 8px;
+            color: #cbd5e1;
+        }
+
         .brand-bar {
             display: flex;
             align-items: center;
@@ -260,6 +281,11 @@
 <div class="page-wrap">
 
     <div class="form-header">
+        <div class="lang-switch">
+            <a href="case-study-form.html" class="active">EN</a>
+            <span>|</span>
+            <a href="case-study-form-zh.html">繁中</a>
+        </div>
         <h1 class="form-title">Submit a Case Study</h1>
         <p class="form-subtitle">Fill in the project details below. The more specific you are, the faster we can turn it into a published case study. Fields marked with * cannot be left blank. Without them, we cannot write the story.</p>
     </div>

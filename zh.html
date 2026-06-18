@@ -147,7 +147,8 @@
         
         <nav class="nav-group">
             <div class="nav-label">行銷月報</div>
-            <div class="nav-item active" onclick="showTab('tab-report-may', this)">5 月</div>
+            <div class="nav-item active" onclick="showTab('tab-report-june', this)">6 月</div>
+            <div class="nav-item" onclick="showTab('tab-report-may', this)">5 月</div>
         </nav>
 
         <nav class="nav-group">
@@ -177,28 +178,6 @@
                 
                 <div id="internal-links" class="workspace-sections" style="display:none;">
                     <div class="workspace-section">
-                        <h2 class="workspace-section-title">行銷素材</h2>
-                        <div class="workspace-list">
-                            <div class="workspace-card">
-                                <div class="workspace-label">素材</div>
-                                <div>
-                                    <div class="workspace-title">電子報素材</div>
-                                    <div class="workspace-meta">可重複使用的電子報與簡報素材。</div>
-                                </div>
-                                <a href="https://pse.is/geo-presentation" class="btn-outline" target="_blank">Google Drive</a>
-                            </div>
-                            <div class="workspace-card">
-                                <div class="workspace-label">素材</div>
-                                <div>
-                                    <div class="workspace-title">網站專案</div>
-                                    <div class="workspace-meta">產品頁視覺與可重複使用的網頁素材。</div>
-                                </div>
-                                <a href="https://pse.is/website-assets" class="btn-outline" target="_blank">Google Drive</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="workspace-section">
                         <h2 class="workspace-section-title">更新資料</h2>
                         <div class="workspace-list">
                             <div class="workspace-card">
@@ -224,7 +203,7 @@
         </div>
 
         <!-- PAGE 2: MAY REPORT -->
-        <div id="tab-report-may" class="tab-content active">
+        <div id="tab-report-may" class="tab-content">
             <header class="header">
                 <h1 class="page-title">2026 年 5 月</h1>
             </header>
@@ -234,8 +213,8 @@
                     <div class="event-card sent">
                         <div class="event-date">4/29<span class="event-month">4 月</span></div>
                         <div class="event-content">
-                            <div class="event-title">Wide Angle Camera</div>
-                            <div class="event-description">Wide Angle Camera / Panoramic</div>
+                            <div class="event-title">廣角攝影機</div>
+                            <div class="event-description">廣角 / 全景攝影機</div>
                             <a href="https://www.geovision.com.tw/spotlight/panoramic/desktop/index.html" class="event-link" target="_blank">geovision.com.tw/spotlight/panoramic</a>
                         </div>
                         <div class="event-status">已發送</div>
@@ -251,14 +230,14 @@
                     <div class="event-card scheduled">
                         <div class="event-date">5/13<span class="event-month">5 月</span></div>
                         <div class="event-content">
-                            <div class="event-title">Federation University Australia: Unified Security Across 9 Campuses</div>
+                            <div class="event-title">澳洲 Federation University：9 個校區的統一安全管理</div>
                         </div>
                         <div class="event-status">已排程</div>
                     </div>
                     <div class="event-card progress">
                         <div class="event-date">5/26<span class="event-month">5 月</span></div>
                         <div class="event-content">
-                            <div class="event-title">Cloud Access Control</div>
+                            <div class="event-title">雲端門禁管理</div>
                             <div class="event-description">內容製作中</div>
                         </div>
                         <div class="event-status">製作中</div>
@@ -270,10 +249,10 @@
                 <h2 class="monthly-section-title">預計電子報主題</h2>
                 <div class="topic-list">
                     <div class="topic-pill">零售 3D 客流計數</div>
-                    <div class="topic-pill">Cloud PoE Management</div>
-                    <div class="topic-pill">Cloud Web Report</div>
+                    <div class="topic-pill">雲端 PoE 管理</div>
+                    <div class="topic-pill">雲端報表</div>
                     <div class="topic-pill">AGX</div>
-                    <div class="topic-pill">Cloud NVR</div>
+                    <div class="topic-pill">雲端 NVR</div>
                 </div>
             </div>
 
@@ -285,6 +264,82 @@
                         <div class="list-meta">名額開放中，請分享報名連結給客戶。</div>
                     </div>
                     <button class="btn-outline" type="button" onclick="copyWebinarLink(this)">複製連結</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: JUNE REPORT -->
+        <div id="tab-report-june" class="tab-content active">
+            <header class="header">
+                <h1 class="page-title">2026 年 6 月</h1>
+            </header>
+            <div class="monthly-section">
+                <h2 class="monthly-section-title">電子報主題與排程</h2>
+                <div class="event-list">
+                    <div class="event-card sent">
+                        <div class="event-date">6/3<span class="event-month">6 月</span></div>
+                        <div class="event-content">
+                            <div class="event-title">6 月新品報</div>
+                            <div class="event-description">6 月新品更新</div>
+                            <a href="https://www.geovision.com.tw/_upload/doc/re/2026-06-release.html" class="event-link" target="_blank">2026-06-release.html</a>
+                        </div>
+                        <div class="event-status">已寄送</div>
+                    </div>
+                    <div class="event-card sent">
+                        <div class="event-date">6/10<span class="event-month">6 月</span></div>
+                        <div class="event-content">
+                            <div class="event-title">3D 人流統計</div>
+                            <div class="event-description">3D 客流計數解決方案</div>
+                            <a href="https://www.geovision.com.tw/spotlight/3dpeoplecounter/desktop/index.html" class="event-link" target="_blank">spotlight/3dpeoplecounter</a>
+                        </div>
+                        <div class="event-status">已寄送</div>
+                    </div>
+                    <div class="event-card progress">
+                        <div class="event-date">6/24<span class="event-month">6 月</span></div>
+                        <div class="event-content">
+                            <div class="event-title">雲端跨 13 據點停車管理</div>
+                            <div class="event-description">多據點停車管理內容</div>
+                        </div>
+                        <div class="event-status">製作中</div>
+                    </div>
+                    <div class="event-card progress">
+                        <div class="event-date">7/8<span class="event-month">7 月</span></div>
+                        <div class="event-content">
+                            <div class="event-title">雲端訪客管理</div>
+                            <div class="event-description">訪客管理流程內容</div>
+                        </div>
+                        <div class="event-status">製作中</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monthly-section">
+                <h2 class="monthly-section-title">YouTube 影片更新</h2>
+                <div class="list-row">
+                    <div class="list-info">
+                        <div class="list-title">如何透過 GV-VMS 20 與 GV-Web Report 設定人流統計</div>
+                        <div class="list-meta">人流統計設定教學影片</div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=e70EuxygWgw" class="btn-outline" target="_blank">觀看影片</a>
+                </div>
+                <div class="list-row">
+                    <div class="list-info">
+                        <div class="list-title">如何在 GV-VMS V20 上整合 GV-IP Speaker 與 AI 事件</div>
+                        <div class="list-meta">GV-IP Speaker 與 AI 事件整合教學影片</div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=18SJ_t52wec" class="btn-outline" target="_blank">觀看影片</a>
+                </div>
+            </div>
+
+            <div class="monthly-section">
+                <h2 class="monthly-section-title">預計電子報主題</h2>
+                <div class="topic-list">
+                    <div class="topic-pill">SNVR</div>
+                    <div class="topic-pill">GV-Eye</div>
+                    <div class="topic-pill">雲端報表</div>
+                    <div class="topic-pill">雲端 PoE 管理</div>
+                    <div class="topic-pill">AGX</div>
+                    <div class="topic-pill">雲端 NVR</div>
                 </div>
             </div>
         </div>
