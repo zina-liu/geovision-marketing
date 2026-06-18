@@ -466,6 +466,70 @@ p {
   border-left: 1px solid var(--line);
 }
 
+.solution-bridge {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 28px;
+  margin-top: 28px;
+  padding: 26px 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(31, 111, 255, 0.08), rgba(255, 255, 255, 0) 42%),
+    #ffffff;
+  box-shadow: var(--soft-shadow);
+}
+
+.solution-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 190px;
+  padding-right: 26px;
+  border-right: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.solution-shield {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background-color: var(--blue);
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 4l9 3v7.2c0 5.5-3.6 9.3-9 11.8-5.4-2.5-9-6.3-9-11.8V7l9-3z' stroke='white' stroke-width='2.3' stroke-linejoin='round'/%3E%3Cpath d='M10.5 15.2l3 3 6-6.2' stroke='white' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+}
+
+.solution-copy h3 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.solution-copy p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solution-arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, transparent 45%, #ffffff 46% 54%, transparent 55%) center / 16px 16px no-repeat,
+    var(--blue);
+  box-shadow: 0 12px 26px rgba(31, 111, 255, 0.24);
+}
+
 .icon {
   display: inline-block;
   width: 48px;
@@ -574,6 +638,20 @@ p {
 .module p {
   margin-bottom: 0;
   font-size: 15px;
+}
+
+.module-points {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.module-points li::marker {
+  color: var(--blue);
 }
 
 .viewers {
@@ -1085,6 +1163,25 @@ p {
     border-left: 0;
   }
 
+  .solution-bridge {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .solution-mark {
+    min-width: 0;
+    padding-right: 0;
+    padding-bottom: 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .solution-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
 }
 
 @media (max-width: 640px) {
@@ -1157,6 +1254,30 @@ p {
 
   .card {
     padding: 24px;
+  }
+
+  .solution-bridge {
+    margin-top: 18px;
+    padding: 22px;
+  }
+
+  .solution-mark {
+    gap: 12px;
+    font-size: 28px;
+  }
+
+  .solution-shield {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  .solution-copy h3 {
+    font-size: 21px;
+  }
+
+  .solution-copy p {
+    font-size: 16px;
   }
 
   .workflow-visual {
