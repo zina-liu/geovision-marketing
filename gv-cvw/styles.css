@@ -902,18 +902,8 @@ p {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: var(--soft-shadow);
-}
-
-.fit-card::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 4px;
-  content: "";
-  background: var(--blue);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  box-shadow: 0 10px 28px rgba(11, 39, 64, 0.06);
 }
 
 .fit-icon {
