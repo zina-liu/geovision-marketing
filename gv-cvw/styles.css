@@ -563,7 +563,7 @@ p {
   font-weight: 600;
 }
 
-.workflow .section-heading p {
+.workflow .section-heading p:not(.eyebrow) {
   font-weight: 400;
 }
 
