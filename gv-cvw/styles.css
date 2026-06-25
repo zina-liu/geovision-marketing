@@ -638,11 +638,12 @@ p {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: 32px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .platform-screen {
-  min-height: 520px;
+  aspect-ratio: 2167 / 1071;
+  min-height: 0;
   background: #101820;
 }
 
@@ -1286,7 +1287,7 @@ p {
 
   .platform-screen {
     min-height: 0;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2167 / 1071;
   }
 
   .problem-strip article + article {
