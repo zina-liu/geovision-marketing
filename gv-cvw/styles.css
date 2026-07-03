@@ -924,7 +924,7 @@ p {
 
 .supervisor-visual {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
+  grid-template-columns: minmax(0, 60%) minmax(0, 40%);
   gap: 18px;
   align-items: start;
 }
@@ -943,20 +943,22 @@ p {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 66px;
-  padding: 12px 16px;
+  min-height: 72px;
+  padding: 14px 18px;
   background: #ffffff;
   color: #24313e;
 }
 
 .telegram-avatar {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   place-items: center;
   border-radius: 50%;
   background: #32b5b0;
   color: white;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -965,9 +967,10 @@ p {
   gap: 2px;
 }
 
-.telegram-topbar small {
-  color: var(--muted);
-  font-size: 12px;
+.telegram-topbar strong {
+  color: #24313e;
+  font-size: 18px;
+  line-height: 1.2;
 }
 
 .telegram-column {
@@ -1011,9 +1014,20 @@ p {
 
 .telegram-caption {
   display: grid;
-  gap: 5px;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 5px 12px;
+  align-items: center;
   padding: 0 4px;
   color: #17324f;
+}
+
+.telegram-caption-icon {
+  width: 46px;
+  height: 46px;
+  grid-row: span 2;
+  border-radius: 50%;
+  box-shadow: 0 12px 24px rgba(43, 123, 220, 0.24);
+  object-fit: cover;
 }
 
 .telegram-caption strong {
