@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>案例研究 — West Dorset Leisure Holidays | GeoVision ANPR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12161C;
+    --surface: #1A2029;
+    --surface-2: #202834;
+    --line: #2B3542;
+    --text: #E7ECF2;
+    --text-dim: #8B96A5;
+    --detect: #45E0A8;
+    --detect-dim: #2C7C63;
+    --amber: #F2A93B;
+    --radius: 2px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(69,224,168,0.08), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- Bracket frame: the signature element ---------- */
+  .frame{
+    position: relative;
+    padding: 2px;
+  }
+  .frame::before, .frame::after,
+  .frame .fc-tl, .frame .fc-tr, .frame .fc-bl, .frame .fc-br{
+    content:"";
+    position:absolute;
+    width:18px; height:18px;
+    border: 2px solid var(--detect);
+    opacity:0.9;
+  }
+  .frame::before{ top:-2px; left:-2px; border-right:none; border-bottom:none; }
+  .frame::after{ top:-2px; right:-2px; border-left:none; border-bottom:none; }
+  .frame .fc-bl{ bottom:-2px; left:-2px; border-right:none; border-top:none; }
+  .frame .fc-br{ bottom:-2px; right:-2px; border-left:none; border-top:none; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 48px;
+    border-bottom: 1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .topbar .brand{ color: var(--text); font-weight:500; }
+  .topbar .brand span{ color: var(--detect); }
+  .status-dot{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background: var(--detect); margin-right:8px;
+    box-shadow: 0 0 6px var(--detect);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 72px 48px 56px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--detect);
+    margin-bottom: 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 28px; height:1px; background: var(--detect-dim);
+  }
+  h1{
+    font-family:'Space Grotesk', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.5;
+    margin: 0 0 22px;
+    letter-spacing: 0;
+  }
+  h1 em{
+    font-style: normal;
+    color: var(--detect);
+  }
+  .hero-sub{
+    font-size: 16.5px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 0 40px;
+  }
+
+  .hero-meta{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+    margin-top: 8px;
+  }
+  @media (max-width: 780px){
+    .hero-meta{ grid-template-columns: 1fr; }
+  }
+  .hero-meta div{
+    background: var(--surface);
+    padding: 18px 22px;
+  }
+  .hero-meta .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .hero-meta .v{
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* ---------- Section shell ---------- */
+  section.block{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 46px 48px;
+    border-top: 1px solid var(--line);
+  }
+  .block-head{
+    display:flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .block-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--detect);
+    border: 1px solid var(--detect-dim);
+    padding: 2px 8px;
+    border-radius: var(--radius);
+  }
+  .block-title{
+    font-family:'Space Grotesk', 'Noto Sans TC', sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin:0;
+  }
+  p{ margin: 0 0 14px; color: #C7D0DA; font-size: 15.5px; }
+  p:last-child{ margin-bottom:0; }
+
+  /* ---------- Two column layout ---------- */
+  .cols{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+  }
+  @media (max-width: 780px){
+    .cols{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Product list ---------- */
+  .kit{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .kit li{
+    display:grid;
+    grid-template-columns: 46px 1fr;
+    gap: 14px;
+    align-items:center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+  }
+  .kit .qty{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--detect);
+    text-align:center;
+  }
+  .kit .name{ font-weight:600; font-size:14.5px; }
+  .kit .desc{ color: var(--text-dim); font-size: 13px; margin-top:2px; }
+
+  /* ---------- Stat strip ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+  }
+  @media (max-width: 780px){
+    .stats{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .stats div{
+    background: var(--surface);
+    padding: 26px 20px;
+    text-align:center;
+  }
+  .stats .num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 30px;
+    font-weight:700;
+    color: var(--detect);
+    display:block;
+    margin-bottom:6px;
+  }
+  .stats .lbl{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing:0.03em;
+    color: var(--text-dim);
+  }
+
+  /* ---------- Image frame ---------- */
+  figure{ margin: 28px 0 0; }
+  figure img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius: var(--radius);
+  }
+  figcaption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Quote ---------- */
+  .quote-wrap{ position:relative; }
+  blockquote{
+    margin:0;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 34px;
+    font-size: 16px;
+    color: var(--text);
+    position:relative;
+  }
+  blockquote::before{
+    content:"“";
+    position:absolute;
+    top: 8px; left: 20px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 54px;
+    color: var(--detect-dim);
+    line-height:1;
+  }
+  blockquote p{ color: var(--text); position:relative; z-index:1; }
+  .cite{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .cite-badge{
+    width:38px; height:38px;
+    border-radius:50%;
+    background: var(--surface-2);
+    border: 1px solid var(--detect-dim);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    color: var(--detect);
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .cite-name{ font-weight:600; font-size:14.5px; }
+  .cite-role{ color: var(--text-dim); font-size: 12.5px; }
+
+  /* ---------- Contact grid ---------- */
+  .contacts{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+  }
+  @media (max-width: 780px){
+    .contacts{ grid-template-columns: 1fr; }
+  }
+  .contacts > div{
+    background: var(--surface);
+    padding: 20px 22px;
+  }
+  .contacts .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--detect);
+    margin-bottom: 10px;
+  }
+  .contacts .org{ font-weight:600; font-size:14.5px; margin-bottom:2px; }
+  .contacts .person{ font-size: 13.5px; color: var(--text-dim); margin-bottom:8px; }
+  .contacts a{ color: #9FD6C6; font-size: 12.5px; text-decoration:none; word-break: break-all; }
+  .contacts a:hover{ text-decoration:underline; }
+
+  /* ---------- Executive summary ---------- */
+  .exec{
+    background: var(--surface);
+    border-left: 3px solid var(--detect);
+    padding: 26px 30px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  footer{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 30px 48px 60px;
+    color: var(--text-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  ::selection{ background: var(--detect-dim); color: #fff; }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand"><span class="status-dot"></span>GeoVision <span>// 案例研究</span></div>
+    <div class="mono">內部流通 — 行銷部門</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">度假園區 &middot; 車牌辨識門禁</div>
+    <h1>每年 30 萬輛車進出，<br><em>閘門自動放行，免去人工開關。</em></h1>
+    <p class="hero-sub">
+      West Dorset Leisure Holidays 如何將 GeoVision ANPR 與訂房系統整合，
+      讓 Graston Copse Holiday Park 的每一輛入園車輛都能自動完成報到。
+    </p>
+
+    <div class="hero-meta">
+      <div>
+        <div class="k">客戶</div>
+        <div class="v">West Dorset Leisure Holidays</div>
+      </div>
+      <div>
+        <div class="k">系統整合商</div>
+        <div class="v">C.I.D. Fire and Security Ltd.</div>
+      </div>
+      <div>
+        <div class="k">案場</div>
+        <div class="v">Graston Copse Holiday Park, UK</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">01</span>
+      <h2 class="block-title">背景</h2>
+    </div>
+    <p>
+      West Dorset Leisure Holidays 在英國經營六座度假園區，其中三座已導入 GeoVision ANPR 系統。
+      這份案例聚焦在 Graston Copse Holiday Park 的建置，由系統整合商 C.I.D. Fire and Security Ltd. 負責執行。
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">02</span>
+      <h2 class="block-title">遇到的挑戰</h2>
+    </div>
+    <div class="cols">
+      <div>
+        <p>
+          客戶雖然導入了車牌辨識系統，但訂房系統是另一個平台，訪客會在 Booking Experts 系統中輸入抵達日期和車牌號碼。ANPR 系統雖然上線了，卻沒有跟 Booking Experts 整合。 員工仍得在訪客抵達前，把每一筆訂房資訊手動輸入 GeoVision ANPR 資料庫，系統才能辨識車牌並完成比對授權，開啟閘門。 此外，雙排車牌、機車與員工用車，都需要另一套辨識以外的通行方式。
+        </p>
+      </div>
+      <div class="frame">
+        <div class="fc-bl"></div><div class="fc-br"></div>
+        <div style="background:var(--surface); border:1px solid var(--line); padding:22px; height:100%;">
+          <div class="mono" style="font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--detect); margin-bottom:14px;">痛點</div>
+          <p style="margin-bottom:12px;">ANPR 未與訂房系統整合，需人工比對授權</p>
+          <p style="margin-bottom:0;">雙排車牌、機車與員工用車缺乏自動化通行方式</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">03</span>
+      <h2 class="block-title">使用產品</h2>
+    </div>
+    <ul class="kit">
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">GV-ASManager</div>
+          <div class="desc">門禁與 ANPR 管理軟體</div>
+        </div>
+      </li>
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">GV-LPC1200</div>
+          <div class="desc">車牌辨識攝影機</div>
+        </div>
+      </li>
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">GV-IOBOX-4E</div>
+          <div class="desc">觸發閘門開啟</div>
+        </div>
+      </li>
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">AS1620</div>
+          <div class="desc">單門門禁控制器</div>
+        </div>
+      </li>
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">GV-RK1352</div>
+          <div class="desc">金屬按鍵讀卡機，IP66 戶外防護等級</div>
+        </div>
+      </li>
+      <li>
+        <div class="qty">1x</div>
+        <div>
+          <div class="name">GV-EBD4704</div>
+          <div class="desc">魚眼攝影機，監看入口整體概況</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">04</span>
+      <h2 class="block-title">解決方案</h2>
+    </div>
+    <div class="cols">
+      <div>
+        <p>
+          GeoVision 與 Booking Experts 密切合作，打造並優化兩套系統之間的 API 整合，
+          並在整個專案過程中投入專職的專案管理與技術支援。
+        </p>
+        <p>
+          訪客的訂房資訊，包括抵達日期與車牌號碼，現在會自動同步進 GV-ASManager。
+          訪客抵達時，ANPR 系統會辨識已登記的車輛，自動開啟閘門並完成報到，全程不需要員工介入。
+        </p>
+        <p>
+          GeoVision 也客製化軟體，讓同一輛車能同時支援多筆未來訂房。
+          對於機車、雙排車牌與員工用車，則改用戶外鍵盤讀卡機，以密碼方式提供安全通行。
+        </p>
+      </div>
+      <figure class="frame">
+        <div class="fc-bl"></div><div class="fc-br"></div>
+        <img src="wdlh-anpr-entrance.png" alt="Graston Copse Holiday Park 的 ANPR 入口與門禁設備">
+        <figcaption>Graston Copse Holiday Park &middot; ANPR 入口概況</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">05</span>
+      <h2 class="block-title">成果與效益</h2>
+    </div>
+    <div class="stats">
+      <div>
+        <span class="num">0</span>
+        <span class="lbl">人工開閘</span>
+      </div>
+      <div>
+        <span class="num">100%</span>
+        <span class="lbl">自動報到</span>
+      </div>
+      <div>
+        <span class="num">3</span>
+        <span class="lbl">通行方式全數涵蓋</span>
+      </div>
+      <div>
+        <span class="num">30萬</span>
+        <span class="lbl">每年車輛進出量</span>
+      </div>
+    </div>
+    <p style="margin-top:20px;">
+      每年約有 30 萬輛車通過這套系統。這樣的流量不再占用員工的行政工時，
+      讓團隊能把心力放在訪客體驗上，而不是守在閘門前。
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">06</span>
+      <h2 class="block-title">客戶回饋</h2>
+    </div>
+    <div class="quote-wrap">
+      <blockquote>
+        <p>
+          我們最近進行訂房系統轉換時，GeoVision 提供的服務水準讓我印象非常深刻。
+          這次轉換帶來不少獨特的挑戰，需要打造全新的 API 與 SDK。
+          我們的需求相當複雜，雖然花了一些時間並經過幾次調整，但我很高興系統運作得很順暢，完全符合我們的需求。
+        </p>
+        <p>
+          ANPR 帶來的自動化為我們節省了行政成本，也減少員工與訪客之間的接觸，
+          同時讓訪客享有流暢、零接觸的報到體驗。
+          安全對 WDLH 來說同樣重要，GeoVision 的 ANPR 方案提供了我們所需要的安全等級。
+          未來幾年，我們計畫在既有三套系統之外，再增設更多 GeoVision ANPR 系統。
+        </p>
+        <div class="cite">
+          <div class="cite-badge">JS</div>
+          <div>
+            <div class="cite-name">Josh Stevens</div>
+            <div class="cite-role">Technical Manager, West Dorset Leisure Holidays</div>
+          </div>
+        </div>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">07</span>
+      <h2 class="block-title">專案聯絡窗口</h2>
+    </div>
+    <div class="contacts">
+      <div>
+        <div class="role">客戶</div>
+        <div class="org">West Dorset Leisure Holidays</div>
+        <div class="person">Josh Stevens</div>
+        <a href="https://wdlh.co.uk/" target="_blank" rel="noopener">wdlh.co.uk</a><br>
+        <a href="mailto:josh.stevens@wdlh.co.uk">josh.stevens@wdlh.co.uk</a>
+      </div>
+      <div>
+        <div class="role">系統整合商</div>
+        <div class="org">C.I.D. Fire and Security Ltd.</div>
+        <div class="person">Justin Tripp</div>
+        <a href="https://cidfireandsecurity.co.uk/" target="_blank" rel="noopener">cidfireandsecurity.co.uk</a><br>
+        <a href="mailto:justin.tripp@cidfireandsecurity.co.uk">justin.tripp@cidfireandsecurity.co.uk</a>
+      </div>
+      <div>
+        <div class="role">第三方軟體</div>
+        <div class="org">Booking Experts</div>
+        <div class="person">Diksha Praveen Kumar</div>
+        <a href="https://www.bookingexperts.com/" target="_blank" rel="noopener">bookingexperts.com</a><br>
+        <a href="mailto:diksha.praveenkumar@bookingexperts.com">diksha.praveenkumar@bookingexperts.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num mono">08</span>
+      <h2 class="block-title">總結</h2>
+    </div>
+    <div class="exec">
+      <p>
+        GeoVision 這次交付的不只是一套 ANPR 方案。透過與客戶及 Booking Experts 的密切合作，
+        GeoVision 打造出一套客製化整合，在自動化訪客通行的同時，也讓度假園區的日常營運變得更簡單。
+      </p>
+      <p>
+        這個專案展現了 GeoVision 在垂直應用領域的能力，包括彈性的軟體整合、客製化開發，
+        以及從頭到尾的專職技術支援。
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>GeoVision 案例研究 &middot; UK_LPR in Holiday Park &middot; 2026/07/03</span>
+    <span>僅供內部使用</span>
+  </footer>
+
+</body>
+</html>
