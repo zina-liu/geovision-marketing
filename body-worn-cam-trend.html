@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北美市場執法用 Body-Worn Camera 競品分析報告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13293d;
+    --navy-2:#1c3a52;
+    --steel:#2f6690;
+    --teal:#1f7a72;
+    --amber:#b9791b;
+    --paper:#faf9f6;
+    --panel:#ffffff;
+    --line:#e3dfd6;
+    --ink:#20242b;
+    --ink-soft:#565b64;
+    --ink-faint:#8a8f96;
+    --high:#b23b3b;
+    --midhigh:#b9791b;
+    --mid:#3c6e9c;
+    --maxw:800px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC","Noto Sans",-apple-system,"Segoe UI",sans-serif;
+    font-weight:400;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Noto Serif TC","Noto Sans TC",serif;
+    color:var(--navy);
+    line-height:1.45;
+  }
+  a{color:var(--steel);}
+
+  /* progress bar */
+  #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--steel));width:0%;z-index:100;transition:width .1s linear;}
+
+  /* top nav */
+  .topbar{
+    position:sticky;top:0;z-index:90;
+    background:rgba(250,249,246,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1180px;margin:0 auto;padding:0 20px;
+    display:flex;align-items:center;gap:22px;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .topbar-inner::-webkit-scrollbar{display:none;}
+  .brand{
+    flex:0 0 auto;padding:12px 0;font-family:"Noto Serif TC",serif;
+    font-weight:700;font-size:14px;color:var(--navy);white-space:nowrap;
+    border-right:1px solid var(--line);padding-right:18px;
+  }
+  .brand span{display:block;font-family:"Noto Sans TC",sans-serif;font-weight:400;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-top:2px;}
+  nav.toc{display:flex;gap:4px;padding:8px 0;flex:1 1 auto;}
+  nav.toc a{
+    flex:0 0 auto;white-space:nowrap;
+    padding:7px 13px;border-radius:20px;
+    font-size:13px;color:var(--ink-soft);text-decoration:none;
+    border:1px solid transparent;
+  }
+  nav.toc a:hover{border-color:var(--line);color:var(--navy);}
+  nav.toc a.active{background:var(--navy);color:#fff;}
+
+  /* hero */
+  .hero{
+    max-width:1180px;margin:0 auto;padding:56px 20px 34px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-size:12px;letter-spacing:.18em;color:var(--teal);font-weight:600;
+    text-transform:uppercase;margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(26px,4vw,38px);font-weight:700;margin:0 0 14px;max-width:820px;}
+  .hero p.lede{color:var(--ink-soft);max-width:720px;font-size:15.5px;margin:0;}
+
+  /* layout */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;gap:48px;align-items:flex-start;}
+  main{max-width:var(--maxw);padding:44px 0 90px;flex:1 1 auto;min-width:0;}
+  aside.rail{
+    width:200px;flex:0 0 200px;position:sticky;top:70px;
+    padding-top:52px;display:block;
+  }
+  aside.rail .rail-title{font-size:11px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:10px;}
+  aside.rail a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 0 5px 12px;border-left:2px solid var(--line);margin-bottom:1px;}
+  aside.rail a:hover{color:var(--navy);border-left-color:var(--steel);}
+  aside.rail a.active{color:var(--navy);border-left-color:var(--teal);font-weight:600;}
+
+  section{margin-bottom:64px;scroll-margin-top:64px;}
+  section h2{
+    font-size:23px;font-weight:700;margin:0 0 22px;
+    padding-bottom:12px;border-bottom:2px solid var(--navy);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  section h2 .num{font-size:14px;color:var(--teal);font-family:"Noto Sans TC",sans-serif;font-weight:600;}
+  h3{font-size:17px;font-weight:600;margin:34px 0 14px;scroll-margin-top:64px;}
+  h3.subhead{color:var(--steel);font-size:15px;font-weight:700;letter-spacing:.02em;}
+  p{margin:0 0 16px;color:var(--ink);}
+  p.note{color:var(--ink-soft);font-size:14px;background:#f2efe8;border-left:3px solid var(--amber);padding:10px 14px;border-radius:0 4px 4px 0;}
+
+  sup.cite a{
+    color:var(--teal);text-decoration:none;font-weight:600;font-size:11px;
+    padding:0 1px;
+  }
+  sup.cite a:hover{text-decoration:underline;}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;margin:0 0 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);}
+  .scroll-hint{display:none;font-size:12px;color:var(--ink-faint);margin:0 0 26px;}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px;}
+  table.wide{min-width:1500px;}
+  thead th{
+    background:var(--navy);color:#fff;text-align:left;
+    padding:10px 14px;font-weight:600;font-size:12.5px;letter-spacing:.02em;
+    white-space:nowrap;position:sticky;top:0;
+  }
+  tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(odd){background:#fcfbf8;}
+  tbody tr:hover{background:#f1efe6;}
+  td strong{color:var(--navy);}
+  .brand-cell{font-weight:700;color:var(--navy);white-space:nowrap;}
+
+  /* swot */
+  table.swot thead th:nth-child(2){background:#3c6e56;}
+  table.swot thead th:nth-child(3){background:#8a3b3b;}
+  table.swot thead th:nth-child(4){background:#2f6690;}
+  table.swot thead th:nth-child(5){background:#a8731f;}
+
+  /* priority badges */
+  .badge{
+    display:inline-block;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;
+    color:#fff;white-space:nowrap;
+  }
+  .badge.high{background:var(--high);}
+  .badge.midhigh{background:var(--midhigh);}
+  .badge.mid{background:var(--mid);}
+
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{margin-bottom:8px;}
+  ul.plain li::marker{color:var(--teal);}
+
+  .flow{
+    display:flex;align-items:stretch;gap:0;margin:26px 0 10px;flex-wrap:wrap;
+  }
+  .flow-step{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:16px 14px;flex:1 1 150px;min-width:140px;text-align:center;
+    box-shadow:0 1px 2px rgba(19,41,61,.04);
+  }
+  .flow-step .tag{font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.05em;margin-bottom:6px;}
+  .flow-step .desc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+  .flow-arrow{
+    flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+    color:var(--ink-faint);font-size:20px;padding:0 6px;
+  }
+  .flow-caption{font-size:13px;color:var(--ink-faint);margin:8px 0 30px;}
+
+  .refgroup{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .refgroup:last-child{border-bottom:none;}
+  .refgroup .refnums{font-family:"Noto Sans TC",sans-serif;font-size:12px;color:var(--teal);font-weight:700;margin-bottom:4px;}
+  .refgroup .reftitle{font-size:14.5px;color:var(--ink);margin-bottom:3px;}
+  .refgroup .refurl{font-size:12.5px;word-break:break-all;}
+  .refgroup .refurl a{color:var(--ink-faint);}
+
+  footer{
+    max-width:1180px;margin:0 auto;padding:30px 20px 60px;
+    border-top:1px solid var(--line);color:var(--ink-faint);font-size:12.5px;
+  }
+
+  #top-btn{
+    position:fixed;right:24px;bottom:24px;width:42px;height:42px;border-radius:50%;
+    background:var(--navy);color:#fff;border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+    box-shadow:0 4px 12px rgba(19,41,61,.3);opacity:0;pointer-events:none;
+    transition:opacity .2s;z-index:80;
+  }
+  #top-btn.show{opacity:1;pointer-events:auto;}
+
+  @media (max-width:980px){
+    aside.rail{display:none;}
+    .wrap{gap:0;}
+  }
+  @media (max-width:640px){
+    .hero{padding:40px 16px 26px;}
+    main{padding:30px 0 60px;}
+    .wrap{padding:0 16px;}
+    table.wide{min-width:1300px;}
+    .scroll-hint{display:block;}
+    .flow{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg);padding:2px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">競品分析報告<span>BODY-WORN CAMERA · 北美市場</span></div>
+    <nav class="toc" id="toc">
+      <a href="#summary">執行摘要</a>
+      <a href="#methodology">研究方法</a>
+      <a href="#competitors">主要競品</a>
+      <a href="#usecases">場景與整合</a>
+      <a href="#trends">趨勢與建議</a>
+      <a href="#references">參考來源</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Competitive Analysis Report</div>
+  <h1>北美市場執法用 Body-Worn Camera 競品分析報告</h1>
+  <p class="lede">涵蓋 Axon、Motorola、Getac、Pro-Vision、Reveal、Digital Ally、Coreforce、Transcend 八個北美主要品牌，比較規格、平台整合、政府採購適配性與 SWOT，並提出產品改進與市場定位建議。</p>
+</div>
+
+<div class="wrap">
+  <aside class="rail" id="rail">
+    <div class="rail-title">本頁章節</div>
+    <a href="#summary">執行摘要</a>
+    <a href="#methodology">研究方法與範圍</a>
+    <a href="#competitors">主要競品與代表機型</a>
+    <a href="#usecases">使用場景與整合</a>
+    <a href="#trends">趨勢、SWOT 與建議</a>
+    <a href="#references">參考來源與限制</a>
+  </aside>
+
+  <main>
+
+    <section id="summary">
+      <h2><span class="num">01</span>執行摘要</h2>
+
+      <p>就北美執法與公共安全市場來看，Body-Worn Camera 已經從「單機錄影設備」快速演進為「前端攝錄 + 即時通聯 + 雲端證據管理 + AI 輔助辦案」的整體解決方案。近三年的市場重點不是單純比解析度，而是比四件事：第一，即時性，包含 4G/LTE 或 Wi-Fi 上傳、直播與指揮中心可視化；第二，證據鏈與治理能力，包含加密、稽核、保存政策、紅化與對外分享；第三，跨系統整合，尤其是車載系統、CAD/RMS/RTCC；第四，整體採購模型，包含訂閱制、雲端儲存與五年期服務。Axon、Motorola 與 Getac 已經明顯朝「平台型高階方案」移動；Coreforce、Pro-Vision、Digital Ally 則更強調與既有執法流程、車載與自動觸發的整合；Reveal 與 Transcend 在特定垂直場景則以易用、低門檻或成本效率切入。<sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">1</a></sup></p>
+
+      <p>對您目前這類 GeoVision 風格、偏傳統執法穿戴式攝影機而言，最大的競爭壓力不是外觀或單點規格，而是「從攝影機升級為平台節點」。從各家官方資料看，北美主流品牌已普遍把 BWC 視為指揮調度、證據管理與 AI 工作流的一部分，而非單純錄影硬體。這代表新產品若仍停留在「本機錄影 + 回站上傳 + 封閉管理」的打法，會在大型警局、縣市政府與校園/交通/醫療等高合規客群中逐步失去競爭力。<sup class="cite"><a href="https://www.axon.com/help/axon-body-4/cameras-and-sensors/body/introduction.htm" target="_blank" rel="noopener">2</a></sup></p>
+
+      <p>綜合比較後，高可信度的結論是：若您的目標是北美公共安全與大型機構，短期最有效的差異化策略不是硬拼 Axon 或 Motorola 的全棧生態，而是鎖定「中價位、可快速導入、與既有 VMS/DEMS/CAD 相容、具 CJIS 級治理能力」的空缺；同時把產品升級方向集中在六項能力：LTE/5G 即時上傳、可配置自動觸發、可換電池/快充、端到端證據鏈、開放 API/ONVIF 對接，以及 AI 輔助後處理。<sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">3</a></sup></p>
+    </section>
+
+    <section id="methodology">
+      <h2><span class="num">02</span>研究方法與範圍</h2>
+
+      <p>本報告以北美可公開驗證之官方資料為主，包括原廠產品頁、資料表、產品說明、支援文件、官方新聞與平台說明；價格則在官方未公開時，輔以近三年公開採購文件、政府招標或零售頁面做區間估算，並明確標示為估算。篩選原則是：品牌需在 2023–2026 年間有北美銷售、維護、更新或部署證據；優先納入執法/公共安全應用，而非純消費級穿戴相機。<sup class="cite"><a href="https://www.motorolasolutions.com/newsroom/press-releases/mobile-broadband-enabled-v700-body-camera.html" target="_blank" rel="noopener">4</a></sup></p>
+
+      <p>就您目前產品樣式來看，現有方案偏向典型「攝影機 + 夾具 + 充電座/回充底座 + 本地上傳」架構，硬體完整，但市場主戰場已逐漸往「裝置聯網 + 中台治理 + 自動化工作流」移動。這意味著後續評估不應只看鏡頭和電池，而要同時看 DEMS/VMS、雲端部署與第三方整合。</p>
+
+      <h3 class="subhead">目前產品樣式</h3>
+      <p>下圖可概括近三年北美 Body-Worn Camera 的主流演進方向。此趨勢可從 Axon Fusus、Motorola V700/VideoManager、Getac Video Suite、Coreforce DEMS 與各家 AI/RTCC 整合資料中得到一致印證。<sup class="cite"><a href="https://www.axon.com/products/axon-fusus" target="_blank" rel="noopener">5</a></sup></p>
+
+      <div class="flow">
+        <div class="flow-step"><div class="tag">硬體導向</div><div class="desc">錄影與回站上傳</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="tag">聯網化</div><div class="desc">Wi-Fi / LTE 即時上傳與直播</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="tag">平台化</div><div class="desc">DEMS / VMS / 車載 / CAD 整合</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="tag">智慧化</div><div class="desc">AI 轉錄、紅化、摘要標記</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="tag">治理化</div><div class="desc">CJIS 隱私、模組 API 開放性</div></div>
+      </div>
+      <p class="flow-caption">近三年北美 Body-Worn Camera 主流演進方向</p>
+    </section>
+
+    <section id="competitors">
+      <h2><span class="num">03</span>主要競品與代表機型</h2>
+
+      <h3>北美主要品牌與代表型號總覽</h3>
+      <p>下表列出本次納入比較的八個品牌與代表型號，並註明近三年內可見的銷售、維護或更新依據。</p>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>品牌</th><th>代表型號</th><th>近三年可驗證動態</th><th>代表定位</th><th>來源</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="brand-cell">Axon</td>
+              <td><strong>Axon Body 4</strong>；可搭配 <strong>Flex POV</strong></td>
+              <td>2026 年仍持續有製造/軟體更新與產品指南；Axon Body 4 為現行主力機型</td>
+              <td>北美高階全棧生態</td>
+              <td><sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">6</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Motorola Solutions</td>
+              <td><strong>V700</strong>；同系可參考 <strong>VB400 / V500</strong></td>
+              <td>V700 已在北美開放訂購；2024–2025 持續更新 VideoManager 與直播分享能力</td>
+              <td>高階即時連線 + RTCC/車載整合</td>
+              <td><sup class="cite"><a href="https://www.motorolasolutions.com/newsroom/press-releases/mobile-broadband-enabled-v700-body-camera.html" target="_blank" rel="noopener">7</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Getac Video Solutions</td>
+              <td><strong>BC-04-4K / BC-04-1080P</strong></td>
+              <td>現行北美官網主推 BC-04；2024–2026 強調 Getac Video Suite、Flock/Veritone 夥伴整合</td>
+              <td>開放式平台型中高階</td>
+              <td><sup class="cite"><a href="https://www.getac.com/us/products/body-worn-cameras-bwc/bc-04/" target="_blank" rel="noopener">8</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Pro-Vision</td>
+              <td><strong>Bodycam 4 4G</strong></td>
+              <td>2024–2026 仍持續更新支援文件與州政府投標文件</td>
+              <td>執法專用、與車載/訪談室深整合</td>
+              <td><sup class="cite"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_07.pdf" target="_blank" rel="noopener">9</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Reveal Media</td>
+              <td><strong>D5</strong>；進階可參考 <strong>K6 / K7</strong></td>
+              <td>2025 年仍在美國銷售與支援 DEMS 360；K 系列為 AI/觸控升級線</td>
+              <td>安全、醫療、執法、多產業跨域</td>
+              <td><sup class="cite"><a href="https://www.revealmedia.com/products/dems360" target="_blank" rel="noopener">10</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Digital Ally</td>
+              <td><strong>FirstVu Pro</strong>；同系 <strong>FirstVu II</strong></td>
+              <td>2024 年 10-K 仍列為主力 BWC；官網與規格表持續可用</td>
+              <td>中階執法/保全，強調與車載同步</td>
+              <td><sup class="cite"><a href="https://www.digitalallyinc.com/wp-content/uploads/2024/04/DGLY-Digital-Ally-Inc.-Annual-report-pursuant-to-Section-13-or-15d-10-K-2024-04-01.pdf" target="_blank" rel="noopener">11</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Coreforce</td>
+              <td><strong>BODYWORN suite</strong>；含 <strong>External/Internal</strong>，承接 Utility EOS/EXO 系列</td>
+              <td>2025 完成 Coreforce 品牌整併；2026 持續有警政案例與整合新聞</td>
+              <td>高自動化、政策驅動錄影、公共安全套件</td>
+              <td><sup class="cite"><a href="https://www.coreforcetech.com/resources/latah-county-sheriffs-office-to-launch-new-high-tech-body-cam-and-evidence-record-keeping-system" target="_blank" rel="noopener">12</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Transcend</td>
+              <td><strong>DrivePro Body 70</strong></td>
+              <td>2024/11 手冊更新；美國官網持續販售</td>
+              <td>價格導向、保全/校園/一般機構</td>
+              <td><sup class="cite"><a href="https://us.transcend-info.com/Software/2047/" target="_blank" rel="noopener">13</a></sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>關鍵規格比較</h3>
+      <p class="note">說明：若官方未公開，標示「未公開」；價格多為公開採購或零售估算，未必含雲端/維保。</p>
+
+      <div class="table-scroll">
+        <table class="wide">
+          <thead>
+            <tr>
+              <th>品牌/型號</th><th>解析度/格式</th><th>夜視/低光</th><th>視角</th><th>電池/續航</th>
+              <th>儲存</th><th>連線</th><th>防護</th><th>觸發方式</th><th>加密/資安</th>
+              <th>配件/生態</th><th>價格區間</th><th>來源</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="brand-cell">Axon Body 4</td>
+              <td>5MP 感測器；4:3 畫幅；128GB SSD；格式未公開</td>
+              <td>官方主打升級影像，但未明示 IR</td>
+              <td>160°</td>
+              <td>4300mAh；官方稱 full shift；30 分鐘充 20%</td>
+              <td>128GB 本機 + Axon Evidence / Local</td>
+              <td>直播、地理定位、Axon View；詳細無線規格未公開</td>
+              <td>本體 IP68；Flex POV IP67</td>
+              <td>手動、Axon Signal 無線觸發；可與 Fleet 3、生態系統聯動</td>
+              <td>XTS-AES 256；Axon Evidence；API 可管理 evidence/devices/cases</td>
+              <td>Flex POV、RapidLock、Dock、Axon Respond/Fusus/Signal/Fleet</td>
+              <td>硬體包約 <strong>US$595/台</strong>；另有儲存/授權費</td>
+              <td><sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">14</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Motorola V700</td>
+              <td>1080p/720p/480p，H.264</td>
+              <td>低照度 &lt;0.1 lux</td>
+              <td>130° 水平 / 149° 對角</td>
+              <td>可換電池；12 小時；&lt;4 小時充電</td>
+              <td>128GB</td>
+              <td>LTE、Wi-Fi 802.11b/g/n、BT 4.2、GPS/Glonass</td>
+              <td>IP67，MIL-STD-810G</td>
+              <td>手動、Holster Aware、APX Radio、M500/4RE 群組觸發</td>
+              <td>傳輸與靜態資料加密；CommandCentral Evidence / VideoManager EL</td>
+              <td>8-bay Transfer Station、USB Dock、SmartControl、M500/APX</td>
+              <td><strong>5 年 VaaS 約 US$4,140/台</strong> 含雲服務估算</td>
+              <td><sup class="cite"><a href="https://www.motorolasolutions.com/content/dam/msi/docs/products/body-worn-cameras/v700_datasheet.pdf" target="_blank" rel="noopener">15</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Getac BC-04-4K / 1080P</td>
+              <td>4K/2K/1080p/720p 或 1080p/720p；H.264/H.265</td>
+              <td>官方主打低光錄影</td>
+              <td>140° 水平 / 158° 對角</td>
+              <td>4200mAh；&gt;12 小時</td>
+              <td>128GB</td>
+              <td>Wi-Fi ac、BT 5.0、GPS、選配 4G LTE</td>
+              <td>IP67，6 呎跌落，MIL-STD-810H</td>
+              <td>手動、背景錄影、預錄最長 2 分鐘、事件分類</td>
+              <td>浮水印、Getac Video Suite；官方強調開放生態</td>
+              <td>Dock、VR-X20、生態導入 FlockOS/Veritone</td>
+              <td>州採購約 <strong>US$1,478/台</strong></td>
+              <td><sup class="cite"><a href="https://www.getac.com/us/products/body-worn-cameras-bwc/bc-04/" target="_blank" rel="noopener">16</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Pro-Vision Bodycam 4 4G</td>
+              <td>1080p HD</td>
+              <td>Sony IMX；夜視 Yes</td>
+              <td>140°</td>
+              <td>14 小時；可換電池</td>
+              <td>64GB 不可拆</td>
+              <td>內建 4G、Wi-Fi、GPS；HF RFID</td>
+              <td>IP68</td>
+              <td>手動、預錄/後錄、車載/同機自動觸發、RFID 指派</td>
+              <td>CJIS compliant SecuraMax Cloud；雲端上傳</td>
+              <td>單機/多機底座、混合車載、訪談室、車觸發器</td>
+              <td>硬體約 <strong>US$743/台</strong>；雲端約 <strong>US$55/月/台</strong> 估算</td>
+              <td><sup class="cite"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_07.pdf" target="_blank" rel="noopener">17</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Reveal D5</td>
+              <td>64GB；編碼未公開；K 系列採 H.265</td>
+              <td>Ultra-Low Light</td>
+              <td>D5 未公開；K 系列官方主打低光與預錄</td>
+              <td>D5 14 小時；K6 14 小時；K7 4G 直播</td>
+              <td>D5 64GB；K6/K7 64GB</td>
+              <td>D5：Wi-Fi、BT、GPS；K7 再加 3G/4G</td>
+              <td>Ruggedised；IP 未公開</td>
+              <td>One-touch、預錄 60 秒到 2 分鐘、Beacon/BT 觸發</td>
+              <td>AES-256；DEMS 360</td>
+              <td>Smart Gateway、各式 dock、前螢幕、可調鏡頭頭部</td>
+              <td>北美未見公開價；英國公開採購折算約 <strong>£600/台級</strong>，北美可視為中高價估算</td>
+              <td><sup class="cite"><a href="https://www.revealmedia.com/aus/products/d-series/d5" target="_blank" rel="noopener">18</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Digital Ally FirstVu Pro</td>
+              <td>1080p/720p/480p；H.264/H.265；MP4</td>
+              <td>內建 IR LEDs</td>
+              <td>未公開</td>
+              <td>電池容量未公開；可搭 QuickVu；熱插拔配件公開可售</td>
+              <td>未公開</td>
+              <td>直播、GPS；細項無線規格未完全公開</td>
+              <td>IP67，MIL-STD-810G</td>
+              <td>GOV cloud remote trigger、遠端啟動、VuLink 聯動</td>
+              <td>AES-256；EVO Web / AWS</td>
+              <td>QuickVu 8/24、VuLink、EVO-HD</td>
+              <td>合約價約 <strong>US$610/台</strong></td>
+              <td><sup class="cite"><a href="https://www.digitalallyinc.com/wp-content/uploads/2023/10/930-00109-00_RevC_FirstVu_PRO_Specification_Sheet.pdf" target="_blank" rel="noopener">19</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Coreforce BODYWORN / EXO</td>
+              <td>官方未公開</td>
+              <td>官方強調任務等級錄證，低光細節未公開</td>
+              <td>未公開</td>
+              <td>熱插拔電池；完整班次覆蓋；充飽約 4 小時</td>
+              <td>本機 + Polaris Cloud；容量未公開</td>
+              <td>Wi-Fi、Cellular、自動 offload</td>
+              <td>耐用設計，等級未公開</td>
+              <td>手動、政策驅動、自動化、CAD 觸發、遠端觸發</td>
+              <td>AES-256 at rest/in transit；Polaris DEMS；AI 紅化/轉錄</td>
+              <td>External/Internal camera、Rocket 車載、Smart Waypoint</td>
+              <td>2025 WV 投標可推估約 <strong>US$1,100–1,250/台</strong>含首年服務；舊州約約 <strong>US$760/台</strong> 僅供參考</td>
+              <td><sup class="cite"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_08.pdf" target="_blank" rel="noopener">20</a></sup></td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Transcend DrivePro Body 70</td>
+              <td>1440p QHD 30fps；MP4 H.264</td>
+              <td>無官方 IR，但強調高感光與低照</td>
+              <td>140°</td>
+              <td>3120mAh；最長 9 小時</td>
+              <td>64GB 內建</td>
+              <td>Wi-Fi 802.11n、Bluetooth、GPS</td>
+              <td>IP68，MIL-STD-810G</td>
+              <td>手動、預錄 120 秒、Bluetooth Team Sync</td>
+              <td>無官方公有雲證據平台；DrivePro App/Toolbox</td>
+              <td>DPD6N 網路底座、App、Toolbox</td>
+              <td>北美零售約 <strong>US$249–274</strong></td>
+              <td><sup class="cite"><a href="https://us.transcend-info.com/Software/2047/" target="_blank" rel="noopener">21</a></sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 向左右滑動可查看完整表格 →</p>
+    </section>
+
+    <section id="usecases">
+      <h2><span class="num">04</span>使用場景、平台整合與政府採購適配性</h2>
+
+      <h3>使用場景與產品定位</h3>
+      <p>Axon、Motorola、Getac 與 Coreforce 都不是把 BWC 當成單純攝影機，而是前線感測器。Axon 強調即時支援、雙向通訊、Respond/Fusus 與 Evidence 串接；Motorola 的主軸是 LTE 直播進 CommandCentral Aware、與 M500/APX/Holster Aware 的高密度連動；Getac 的定位則是「開放式、AI 夥伴驅動」的證據平台，結合 Veritone 的 AI 紅化與 FlockOS 的 RTCC/LPR；Coreforce 則以 CAD Activation、政策驅動錄影、RTCC/DEMS/Justice 一條龍作為差異化。這四家最適合警察、縣警、校園警務、交通執法與大型政府專案。<sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">22</a></sup></p>
+
+      <p>Pro-Vision 與 Digital Ally 更像「執法工作流型」解決方案。Pro-Vision 以 Bodycam 4 + SecuraMax Cloud + Hybrid In-Car/Interview Room 為核心，強打 RFID 指派、藍燈/車載觸發與 CJIS 合規雲；Digital Ally 則長期把 FirstVu 與 EVO-HD/VuLink 綁在一起，訴求多角度同步回看、遠端啟動與 AWS 雲證據平台。這兩家對中型警局、郡縣單位、交通警察、矯正與需要車載聯動的機構較有吸引力。<sup class="cite"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_07.pdf" target="_blank" rel="noopener">23</a></sup></p>
+
+      <p>Reveal 與 Transcend 的應用面更廣。Reveal 除執法外，也明顯經營醫療、零售、交通與機場等場域；它的前螢幕、可調鏡頭頭部、觸控與 DEMS 360 讓它特別適合重視去激化、員工安全、跨班交接與多場景部署的組織。Transcend 則較像「高 CP 值、較輕量、偏裝置工具型」方案，適合保全、校園、醫療、交通或企業內部的穿戴錄證，而不是大型警政生態系核心。<sup class="cite"><a href="https://www.revealmedia.com/aus/products/d-series" target="_blank" rel="noopener">24</a></sup></p>
+
+      <h3>證據管理、第三方整合與大型部署適配性矩陣</h3>
+      <div class="table-scroll">
+        <table class="wide">
+          <thead>
+            <tr><th>品牌</th><th>自家證據/管理平台</th><th>車載/通聯整合</th><th>第三方整合與開放性</th><th>部署型態</th><th>政府/大型機構適配性</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="brand-cell">Axon</td>
+              <td>Axon Evidence / Evidence Local</td>
+              <td>Axon Fleet 3、Axon Signal、Respond、Fusus</td>
+              <td>官方提供 Axon Evidence API 與 Developer Community；Fusus 主打 open ecosystem，但對第三方需授權</td>
+              <td>Cloud + Local</td>
+              <td><strong>非常高</strong>：大型警政、RTCC、跨機關證據鏈最成熟之一</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Motorola</td>
+              <td>CommandCentral Evidence、VideoManager EL/EX</td>
+              <td>M500/4RE、APX radio、Holster Aware、Aware</td>
+              <td>VideoManager API；ONVIF/ONStream；已公開支援第三方 VMS，如 Milestone、Avigilon</td>
+              <td>Cloud / On-prem</td>
+              <td><strong>非常高</strong>：對既有 Motorola 無線電與車載客戶特別有利</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Getac</td>
+              <td>Getac Video Suite</td>
+              <td>VR-X20、車載系統</td>
+              <td>官方強調 open ecosystem；已具名 Veritone、Flock Safety；未見公開 Genetec/Milestone 細節</td>
+              <td>Cloud + 軟體生態</td>
+              <td><strong>高</strong>：適合想避免單一封閉生態的政府客戶</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Pro-Vision</td>
+              <td>SecuraMax Cloud</td>
+              <td>Hybrid In-Car、Interview Room、同機/車輛觸發</td>
+              <td>官方未見公開 API/ONVIF 文件；以自家閉環為主</td>
+              <td>Cloud 為主</td>
+              <td><strong>中高</strong>：流程穩定、導入直接，但對第三方開放度較保守</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Reveal</td>
+              <td>DEMS 360</td>
+              <td>Dock/Smart Gateway、Live Centre</td>
+              <td>可自管雲、Reveal 管理 Azure、或地端；未見公開廣義 API 生態</td>
+              <td>Cloud / Azure / On-prem</td>
+              <td><strong>中高</strong>：跨產業很好，但大型北美警政生態穿透仍不及 Axon/Motorola</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Digital Ally</td>
+              <td>EVO Web</td>
+              <td>VuLink、EVO-HD、QuickVu</td>
+              <td>以自家生態為主；未見公開大型 API/ONVIF 方案</td>
+              <td>Cloud</td>
+              <td><strong>中</strong>：中小型部門可行，平台開放性較有限</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Coreforce</td>
+              <td>DEMS-LE / DEMS-Justice / Polaris</td>
+              <td>Rocket in-car、CAD、RTI</td>
+              <td>已公開 Flock Safety 整合；AI 紅化/轉錄；未見完整公開 API 市集</td>
+              <td>Cloud/SaaS</td>
+              <td><strong>高</strong>：對需要 CAD/RMS/Justice 流程整合者非常強</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Transcend</td>
+              <td>DrivePro App / Toolbox / DPD6N 底座</td>
+              <td>無完整警政級車載生態</td>
+              <td>無公開政府級 API / DEMS 生態</td>
+              <td>Device + local tool</td>
+              <td><strong>低至中</strong>：適合低門檻方案，不適合作為大規模警政平台核心</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 向左右滑動可查看完整表格 →</p>
+
+      <p>矩陣顯示，若採購單位是市警局、縣警局、州級單位或大型公共機構，決策關鍵通常不是單機規格，而是平台整合與治理能力。Axon 與 Motorola 在大規模政府採購與既有生態系綁定上優勢最強；Getac 屬於較開放且可延伸 AI/RTCC 的新一代平台；Coreforce 在 CAD/證據/司法工作流方面的完整度高；Pro-Vision 和 Digital Ally 則更適合重視車載同步與專案導入效率的中型機構。<sup class="cite"><a href="https://www.axon.com/help/developer/software/developer/api-settings.htm" target="_blank" rel="noopener">25</a></sup></p>
+    </section>
+
+    <section id="trends">
+      <h2><span class="num">05</span>市場趨勢、SWOT 與對產品的建議</h2>
+
+      <h3>過去三年的技術與採購趨勢</h3>
+      <p>北美 BWC 市場的最明顯趨勢，是 LTE/4G 即時串流與 RTCC 可視化已從加值功能變成高階標配。Motorola V700 明確以 LTE 串流至 CommandCentral Aware 為核心賣點，Axon Body 4 則把直播、地理定位、雙向通訊與 Fusus/Respond 放在前台，Getac 也透過 Getac Video Suite 與 FlockOS/Veritone 強化 RTCC 與 AI 工作流。這代表即時性已不再只是現場方便，而是指揮、調度與事後辦案的共同底座。<sup class="cite"><a href="https://www.motorolasolutions.com/content/dam/msi/docs/products/body-worn-cameras/v700_datasheet.pdf" target="_blank" rel="noopener">26</a></sup></p>
+
+      <p>第二個趨勢是 AI 後處理快速成為效率工具。Reveal K-Series 強調 AI ready，Coreforce DEMS-Justice 明示 AI 紅化、轉錄與智慧搜尋，Getac 與 Veritone 的合作也主打 AI 驅動紅化和更快的證據處理。實務上，這些能力最直接的商業價值不是「很炫」，而是可以縮短 FOIA/公開申請、檢方交付與內部審查時間。<sup class="cite"><a href="https://www.revealmedia.com/products/k-series" target="_blank" rel="noopener">27</a></sup></p>
+
+      <p>第三個趨勢是合規與治理升級。美國 DOJ/BJA 在 2025 年仍持續支持 BWC 計畫擴充，而 FBI CJIS Security Policy 已在 2024 年底釋出 6.0 更新，重點包含存取控制、身分驗證、事件回應與雲端環境要求；若產品要打北美政府標案，證據鏈與資安敘事不能停留在「有雲端」，而必須說清楚誰能看、怎麼記錄、怎麼留存、怎麼整合。若進入企業或醫療市場，CCPA/CPRA 類隱私要求也會使自動紅化與權限控管更重要。<sup class="cite"><a href="https://www.ojp.gov/funding/docs/bja-2025-172461.pdf" target="_blank" rel="noopener">28</a></sup></p>
+
+      <h3>主要競品 SWOT 總結</h3>
+      <div class="table-scroll">
+        <table class="swot">
+          <thead>
+            <tr><th>品牌</th><th>Strengths</th><th>Weaknesses</th><th>Opportunities</th><th>Threats</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="brand-cell">Axon</td>
+              <td>生態最完整；Evidence/API/Fusus/Respond 深</td>
+              <td>價格與訂閱成本高；第三方接入受授權限制</td>
+              <td>擴張大型 RTCC 與 AI 證據工作流</td>
+              <td>客戶對單一生態綁定與預算壓力</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Motorola</td>
+              <td>LTE 直播、無線電/車載整合極強</td>
+              <td>生態對既有 Motorola 客戶更有利，對外品牌學習成本較高</td>
+              <td>用既有 APX/M500 客群持續換機升級</td>
+              <td>Axon 在雲證據平台品牌力較強</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Getac</td>
+              <td>開放式夥伴生態；硬體 rugged；規格均衡</td>
+              <td>北美 BWC 品牌心智不如 Axon/Motorola</td>
+              <td>以開放平台切入不想被綁定的公部門</td>
+              <td>若生態整合速度不足，易被兩大龍頭壓制</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Pro-Vision</td>
+              <td>車載/訪談室/Bodycam 一體化；執法流程感強</td>
+              <td>公開 API 與第三方開放度較弱</td>
+              <td>中型警局、轉換既有車載客戶</td>
+              <td>高階即時串流與 AI 差距被放大</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Reveal</td>
+              <td>多場景適配；前螢幕去激化；DEMS 360 彈性部署</td>
+              <td>北美警政大型案能見度較弱</td>
+              <td>醫療、校園、交通、企業安全</td>
+              <td>若執法市場要求更深 RTCC/CAD 整合，競爭壓力升高</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Digital Ally</td>
+              <td>價格相對可控；VuLink 車載聯動成熟</td>
+              <td>近年品牌聲量與平台開放性偏弱</td>
+              <td>中小警局與保全/活動安防</td>
+              <td>被中高階生態型品牌夾擊</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Coreforce</td>
+              <td>CAD/DEMS/Justice/RTI 串聯強；政策驅動錄影</td>
+              <td>公開硬體規格透明度較低；品牌更名後需再教育市場</td>
+              <td>對需要流程整合與司法協作的機構極具吸引力</td>
+              <td>若客戶強看單機規格或公開 API，需補足說服力</td>
+            </tr>
+            <tr>
+              <td class="brand-cell">Transcend</td>
+              <td>價格低、易導入、規格夠用</td>
+              <td>缺少警政級雲證據與大型整合能力</td>
+              <td>保全、校園、醫療、企業內勤</td>
+              <td>難切入政府大型標案與警政核心部署</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scroll-hint">← 向左右滑動可查看完整表格 →</p>
+
+      <h3>對您產品的六項改進建議</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th style="width:110px;">優先順序</th><th>建議</th><th>預期影響</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge high">高</span></td>
+              <td><strong>加入 4G/LTE，預留 5G 路線圖</strong>，支援直播、重要片段現場回傳與地理定位</td>
+              <td>直接補足與 Axon/Motorola/Getac 的即時性差距，對警政與交通客群影響最大</td>
+            </tr>
+            <tr>
+              <td><span class="badge high">高</span></td>
+              <td><strong>建立 CJIS 等級證據管理中台</strong>，至少具 AES-256、角色權限、稽核紀錄、保存政策、雲/地端混合部署</td>
+              <td>讓產品能從硬體案升級為平台案，提升政府採購資格</td>
+            </tr>
+            <tr>
+              <td><span class="badge high">高</span></td>
+              <td><strong>做可配置自動觸發框架</strong>，整合車燈、開門、拔槍、CAD、藍牙 beacon、跌倒/急動感測</td>
+              <td>這是執法客戶最關心的「少漏錄、少爭議」能力</td>
+            </tr>
+            <tr>
+              <td><span class="badge midhigh">中高</span></td>
+              <td><strong>改為可換電池 + 快充磁吸介面</strong>，目標 12–14 小時實錄與 30 分鐘快速回血</td>
+              <td>直接回答執法全班次需求，提高高壓場景可用性</td>
+            </tr>
+            <tr>
+              <td><span class="badge midhigh">中高</span></td>
+              <td><strong>提供開放 API / ONVIF / Webhook</strong>，優先對接 Genetec、Milestone、第三方 DEMS 或既有 VMS</td>
+              <td>形成與 Axon 封閉式策略不同的差異化，適合中大型機構</td>
+            </tr>
+            <tr>
+              <td><span class="badge mid">中</span></td>
+              <td><strong>加入 AI 後處理模組</strong>，先做自動紅化、轉錄、事件標記，再逐步布局邊緣 AI</td>
+              <td>可顯著降低檢視、公開申請與證據整理成本，對採購說服力高</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>建議的市場定位與差異化策略</h3>
+      <p>短期內，建議不要把新機直接對標 Axon Body 4 或 Motorola V700 的全功能旗艦，而是切入「<strong>中價位、開放整合、導入快</strong>」區間。也就是把產品定義成：比 Transcend/Wolfcom 類方案更政府級，比 Axon/Motorola 更彈性、更不綁平台，並且比 Reveal/Pro-Vision 更強調北美公共安全整合。這種定位特別適合中型警局、校園警務、交通執法、公營醫療與需要混合部署的地方政府。<sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">29</a></sup></p>
+
+      <p>中期策略應聚焦在「<strong>裝置 + 平台 + 整合包</strong>」。具體做法是推出三個 package：基礎版給保全/校園，專業版給交通/醫療/企業，執法版給警察/政府。三版本硬體可以共用，但透過平台授權差異化，例如直播、稽核、AI 紅化、CAD 觸發與第三方整合做分層收費。這能避免陷入單機價格戰。<sup class="cite"><a href="https://www.ojp.gov/funding/docs/bja-2025-172461.pdf" target="_blank" rel="noopener">30</a></sup></p>
+
+      <p>長期來看，真正有機會形成差異化的不是「再高一點的解析度」，而是把您產品做成「<strong>開放式北美公共安全影像節點</strong>」：能接 VMS、能接 DEMS、能接 CAD、能接 RTCC、也能接既有車載與固定監控。若能做到這一點，您不需要複製 Axon 生態，也能在政府採購中以「避免鎖定、保留既有投資」作為強力賣點。<sup class="cite"><a href="https://www.axon.com/help/developer/software/developer/api-settings.htm" target="_blank" rel="noopener">31</a></sup></p>
+
+      <h3 class="subhead">為什麼 CJIS 合規性如此關鍵</h3>
+      <p><strong>CJIS-compliant（符合 CJIS 標準）非常重要</strong>，特別是當您的目標市場包含北美公共安全、執法單位與大型政府機構時。在北美的 Body-Worn Camera (BWC) 市場中，合規與治理升級已經成為三大關鍵趨勢之一。</p>
+
+      <p>以下是 CJIS 合規性之所以重要的幾個核心原因：</p>
+      <ul class="plain">
+        <li><strong>參與政府標案的必備門檻：</strong>FBI 的 CJIS Security Policy 已在 2024 年底釋出 6.0 更新，針對存取控制、身分驗證、事件回應與雲端環境提出了具體要求。若您的產品想要打入北美政府標案，資安與證據鏈的管理不能僅停留在「支援雲端儲存」，而是必須能清楚說明資料誰能看、怎麼記錄、怎麼留存以及如何整合，才能符合政府機關的嚴格標準。</li>
+        <li><strong>從「硬體」升級為「平台」的關鍵：</strong>報告將「建立 CJIS 等級證據管理中台」列為對您產品的<strong>高優先順序改進建議</strong>。具備 AES-256 加密、角色權限劃分、稽核紀錄與保存政策等 CJIS 級別的中台能力，能讓您的產品從單純的硬體設備案，躍升為具備治理能力的平台案，這將大幅提升取得政府採購的資格。</li>
+        <li><strong>市場競爭與差異化突破口：</strong>許多競爭對手已經將 CJIS 合規視為核心賣點，例如 Pro-Vision 就強打其 CJIS 合規雲（SecuraMax Cloud）與執法工作流程的深度結合。如果您不想與 Axon 或 Motorola 這類巨頭硬拼全棧生態，短期最有效的差異化策略就是鎖定「中價位、可快速導入、與既有 VMS/DEMS/CAD 相容、且<strong>具 CJIS 級治理能力</strong>」的市場空缺。</li>
+      </ul>
+      <p>總結來說，具備 CJIS 等級的治理與資安能力，是說服北美執法單位與大型機構採購的重要基石，能顯著降低他們對於證據處理合法性與隱私安全的疑慮。</p>
+    </section>
+
+    <section id="references">
+      <h2><span class="num">06</span>參考來源與限制</h2>
+
+      <h3>主要參考來源</h3>
+      <p>本報告優先使用官方來源，核心包含：Axon Body 4 產品頁、產品指南與 API 文件；Motorola V700 datasheet、CommandCentral Aware/VideoManager 相關頁面與採購文件；Getac BC-04 規格頁與 Getac Video Solutions 官方介紹；Pro-Vision Bodycam 4 與州政府投標文件；Reveal D-Series、K-Series、DEMS 360；Digital Ally FirstVu Pro 規格表、EVO Web、VuLink 與 10-K；Coreforce BODYWORN、DEMS、Flock 整合新聞；Transcend DrivePro Body 70 美國產品頁與使用手冊；以及 FBI CJIS、BJA BWCPIP、California AG CCPA 說明等公共治理文件。<sup class="cite"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">32</a></sup></p>
+
+      <h3>開放問題與限制</h3>
+      <p>少數品牌沒有公開完整硬體 datasheet、API 文件或北美公開價格，特別是 Coreforce、Reveal 部分型號與部分專案型供應商；因此表中若標示「未公開」或「估算」，代表我未在公開來源中找到可穩健驗證的官方數值，而不是其能力不存在。另一點是，政府標案價格極常與儲存年限、授權、意外保固、資料方案、安裝與教育訓練綁在一起，因此不同城市/州的單價不可直接橫向視為純硬體 MSRP。<sup class="cite"><a href="https://www.revealmedia.com/products/dems360" target="_blank" rel="noopener">33</a></sup></p>
+
+      <h3 class="subhead">引用來源清單</h3>
+
+      <div class="refgroup">
+        <div class="refnums">[1] [3] [6] [14] [22] [29] [32]</div>
+        <div class="reftitle">Axon Body 4</div>
+        <div class="refurl"><a href="https://www.axon.com/products/axon-body-4" target="_blank" rel="noopener">axon.com/products/axon-body-4</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[2]</div>
+        <div class="reftitle">Introduction and registration — Body camera product guide</div>
+        <div class="refurl"><a href="https://www.axon.com/help/axon-body-4/cameras-and-sensors/body/introduction.htm" target="_blank" rel="noopener">axon.com/help/axon-body-4/.../introduction.htm</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[4] [7]</div>
+        <div class="reftitle">Motorola Solutions Launches Mobile Broadband-Enabled V700 …</div>
+        <div class="refurl"><a href="https://www.motorolasolutions.com/newsroom/press-releases/mobile-broadband-enabled-v700-body-camera.html" target="_blank" rel="noopener">motorolasolutions.com/newsroom/.../v700-body-camera.html</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[5]</div>
+        <div class="reftitle">Axon Fusus | Real-Time Intelligence Platform for Public …</div>
+        <div class="refurl"><a href="https://www.axon.com/products/axon-fusus" target="_blank" rel="noopener">axon.com/products/axon-fusus</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[8] [16]</div>
+        <div class="reftitle">BC-04-4K UHD rugged body camera</div>
+        <div class="refurl"><a href="https://www.getac.com/us/products/body-worn-cameras-bwc/bc-04/" target="_blank" rel="noopener">getac.com/us/products/body-worn-cameras-bwc/bc-04</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[9] [17] [23]</div>
+        <div class="reftitle">state.wv.us — West Virginia 政府投標文件（07）</div>
+        <div class="refurl"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_07.pdf" target="_blank" rel="noopener">state.wv.us/admin/purchase/Bids/FY2025/..._07.pdf</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[10] [33]</div>
+        <div class="reftitle">DEMS-360 — Reveal Media</div>
+        <div class="refurl"><a href="https://www.revealmedia.com/products/dems360" target="_blank" rel="noopener">revealmedia.com/products/dems360</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[11]</div>
+        <div class="reftitle">Form 10-K for Digital Ally INC filed 04/01/2024</div>
+        <div class="refurl"><a href="https://www.digitalallyinc.com/wp-content/uploads/2024/04/DGLY-Digital-Ally-Inc.-Annual-report-pursuant-to-Section-13-or-15d-10-K-2024-04-01.pdf" target="_blank" rel="noopener">digitalallyinc.com/.../DGLY-10-K-2024-04-01.pdf</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[12]</div>
+        <div class="reftitle">Media Coverage | Coreforce, Inc.</div>
+        <div class="refurl"><a href="https://www.coreforcetech.com/resources/latah-county-sheriffs-office-to-launch-new-high-tech-body-cam-and-evidence-record-keeping-system" target="_blank" rel="noopener">coreforcetech.com/resources/latah-county-sheriffs-office-...</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[13] [21]</div>
+        <div class="reftitle">English — DrivePro Body 70 User Manual</div>
+        <div class="refurl"><a href="https://us.transcend-info.com/Software/2047/" target="_blank" rel="noopener">us.transcend-info.com/Software/2047</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[15] [26]</div>
+        <div class="reftitle">Motorola V700 Datasheet</div>
+        <div class="refurl"><a href="https://www.motorolasolutions.com/content/dam/msi/docs/products/body-worn-cameras/v700_datasheet.pdf" target="_blank" rel="noopener">motorolasolutions.com/.../v700_datasheet.pdf</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[18]</div>
+        <div class="reftitle">D5 | D-Series Body Camera — Reveal Media</div>
+        <div class="refurl"><a href="https://www.revealmedia.com/aus/products/d-series/d5" target="_blank" rel="noopener">revealmedia.com/aus/products/d-series/d5</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[19]</div>
+        <div class="reftitle">FirstVu PRO Specifications</div>
+        <div class="refurl"><a href="https://www.digitalallyinc.com/wp-content/uploads/2023/10/930-00109-00_RevC_FirstVu_PRO_Specification_Sheet.pdf" target="_blank" rel="noopener">digitalallyinc.com/.../FirstVu_PRO_Specification_Sheet.pdf</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[20]</div>
+        <div class="reftitle">state.wv.us — West Virginia 政府投標文件（08）</div>
+        <div class="refurl"><a href="https://www.state.wv.us/admin/purchase/Bids/FY2025/B_0802_DMV2500000003_08.pdf" target="_blank" rel="noopener">state.wv.us/admin/purchase/Bids/FY2025/..._08.pdf</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[24]</div>
+        <div class="reftitle">D-Series Body Cameras — Reveal Media</div>
+        <div class="refurl"><a href="https://www.revealmedia.com/aus/products/d-series" target="_blank" rel="noopener">revealmedia.com/aus/products/d-series</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[25] [31]</div>
+        <div class="reftitle">API Settings — Admin information</div>
+        <div class="refurl"><a href="https://www.axon.com/help/developer/software/developer/api-settings.htm" target="_blank" rel="noopener">axon.com/help/developer/software/developer/api-settings.htm</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[27]</div>
+        <div class="reftitle">K-Series Body Cameras — Reveal Media</div>
+        <div class="refurl"><a href="https://www.revealmedia.com/products/k-series" target="_blank" rel="noopener">revealmedia.com/products/k-series</a></div>
+      </div>
+      <div class="refgroup">
+        <div class="refnums">[28] [30]</div>
+        <div class="reftitle">BJA FY25 Body-Worn Camera Policy and Implementation …</div>
+        <div class="refurl"><a href="https://www.ojp.gov/funding/docs/bja-2025-172461.pdf" target="_blank" rel="noopener">ojp.gov/funding/docs/bja-2025-172461.pdf</a></div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  北美市場執法用 Body-Worn Camera 競品分析報告 — 內容取自原始 Word 文件，僅重新排版為網頁瀏覽格式；文字內容未經改寫。
+</footer>
+
+<button id="top-btn" aria-label="回到頂端">↑</button>
+
+<script>
+  // progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    document.getElementById('top-btn').classList.toggle('show', h.scrollTop > 500);
+  });
+
+  // active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a');
+  const railLinks = document.querySelectorAll('aside.rail a');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        [...tocLinks, ...railLinks].forEach(a => a.classList.remove('active'));
+        document.querySelectorAll(`a[href="#${id}"]`).forEach(a => a.classList.add('active'));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => io.observe(s));
+
+  document.getElementById('top-btn').addEventListener('click', () => {
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+
+</body>
+</html>
