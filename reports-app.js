@@ -96,7 +96,7 @@
 
     function renderPresentationEventSection(events, className, title) {
         if (!events.length) return '';
-        const body = `<div class="calendar-grid"><div class="calendar-month"><div class="calendar-header">${iconCalendar()}<span>${title}</span></div><div class="calendar-events">${events.map(renderPresentationEvent).join('')}</div></div></div>`;
+        const body = `<div class="calendar-grid"><div class="calendar-month"><div class="calendar-events">${events.map(renderPresentationEvent).join('')}</div></div></div>`;
         return renderPresentationSection(className, title, iconSection('<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>'), body);
     }
 
