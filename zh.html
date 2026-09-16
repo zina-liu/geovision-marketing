@@ -27,7 +27,7 @@
         </nav>
 
         <div class="sidebar-actions">
-            <button id="report-mode-toggle" class="mode-button" type="button">開啟報告模式</button>
+            <button id="report-mode-toggle" class="mode-button" type="button">報告模式</button>
             <div class="language-switch">
                 <a href="index.html">EN</a><span>|</span><a href="zh.html" class="active">繁中</a>
             </div>
@@ -36,25 +36,8 @@
 
     <main class="main-container">
         <button id="report-mode-exit" class="report-exit-button" type="button">離開報告模式</button>
-        <section id="hub-view" class="view active" aria-live="polite">
-            <div class="hub-panel">
-                <header class="hub-hero">
-                    <div>
-                        <p class="eyebrow">Marketing Hub</p>
-                        <h1>每月行銷紀錄</h1>
-                        <p>平常用來查閱每月更新和歷史紀錄；需要開會報告時，再把選定月份切成完整報告模式。</p>
-                    </div>
-                    <button class="primary-button open-report-button" type="button" data-action="open-report">開啟報告模式</button>
-                </header>
-                <section id="selected-record" class="selected-record"></section>
-                <section class="archive-section">
-                    <div class="section-heading">
-                        <p class="eyebrow">Archive</p>
-                        <h2>月報紀錄</h2>
-                    </div>
-                    <div id="archive-grid" class="archive-grid"></div>
-                </section>
-            </div>
+        <section id="record-view" class="view active" aria-live="polite">
+            <div id="record" class="record-panel"></div>
         </section>
 
         <section id="report-view" class="view" aria-live="polite">
