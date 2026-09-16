@@ -27,7 +27,7 @@
         </nav>
 
         <div class="sidebar-actions">
-            <button id="report-mode-toggle" class="mode-button" type="button">Report Mode</button>
+            <button id="report-mode-toggle" class="mode-button" type="button">Open Report Mode</button>
             <div class="language-switch">
                 <a href="index.html" class="active">EN</a><span>|</span><a href="zh.html">繁中</a>
             </div>
@@ -36,7 +36,28 @@
 
     <main class="main-container">
         <button id="report-mode-exit" class="report-exit-button" type="button">Exit Report Mode</button>
-        <section id="report-view" class="view active" aria-live="polite">
+        <section id="hub-view" class="view active" aria-live="polite">
+            <div class="hub-panel">
+                <header class="hub-hero">
+                    <div>
+                        <p class="eyebrow">Marketing Hub</p>
+                        <h1>Monthly marketing records</h1>
+                        <p>Browse the monthly archive for internal updates, then open a selected month in report mode when it is time to present.</p>
+                    </div>
+                    <button class="primary-button open-report-button" type="button" data-action="open-report">Open Report Mode</button>
+                </header>
+                <section id="selected-record" class="selected-record"></section>
+                <section class="archive-section">
+                    <div class="section-heading">
+                        <p class="eyebrow">Archive</p>
+                        <h2>Monthly reports</h2>
+                    </div>
+                    <div id="archive-grid" class="archive-grid"></div>
+                </section>
+            </div>
+        </section>
+
+        <section id="report-view" class="view" aria-live="polite">
             <div class="report-stage">
                 <div class="bg-shape bg-shape-1"></div>
                 <div class="bg-shape bg-shape-2"></div>

@@ -10,9 +10,18 @@
             topics: 'Upcoming Newsletter Topics',
             view: 'View Content',
             watch: 'Watch Video',
-            reportMode: 'Report Mode',
+            openReportMode: 'Open Report Mode',
             exitReportMode: 'Exit Report Mode',
-            wrongPassword: 'Wrong password'
+            wrongPassword: 'Wrong password',
+            latest: 'Latest',
+            newsletters: 'Newsletters',
+            scheduled: 'Scheduled',
+            youtubeCount: 'Videos',
+            topicsCount: 'Topics',
+            viewRecord: 'View Record',
+            selectedRecord: 'Selected record',
+            openThisReport: 'Open this report',
+            noYoutube: 'No YouTube updates this month'
         },
         zh: {
             sent: '已寄送',
@@ -22,9 +31,18 @@
             topics: '預計電子報主題',
             view: '查看內容',
             watch: '觀看影片',
-            reportMode: '報告模式',
+            openReportMode: '開啟報告模式',
             exitReportMode: '離開報告模式',
-            wrongPassword: '密碼錯誤'
+            wrongPassword: '密碼錯誤',
+            latest: '最新',
+            newsletters: '電子報',
+            scheduled: '預計排程',
+            youtubeCount: '影片',
+            topicsCount: '主題',
+            viewRecord: '查看紀錄',
+            selectedRecord: '目前查看',
+            openThisReport: '開啟這份報告',
+            noYoutube: '本月沒有影片更新'
         }
     }[lang];
 
@@ -36,8 +54,11 @@
 
     const reportEl = document.getElementById('report');
     const navEl = document.getElementById('month-nav');
+    const hubView = document.getElementById('hub-view');
     const reportView = document.getElementById('report-view');
     const workspaceView = document.getElementById('workspace-view');
+    const selectedRecordEl = document.getElementById('selected-record');
+    const archiveGridEl = document.getElementById('archive-grid');
     const modeButton = document.getElementById('report-mode-toggle');
     const exitButton = document.getElementById('report-mode-exit');
     let activeReportId = new URLSearchParams(window.location.search).get('month') || location.hash.replace('#', '') || data.latest;
@@ -124,15 +145,74 @@
         `;
     }
 
-    function setActiveReport(id) {
+    function reportCounts(report) {
+        return {
+            sent: (report.sent || []).length,
+            scheduled: (report.scheduled || []).length,
+            youtube: (report.youtube || []).length,
+            topics: (t(report.topics) || []).length
+        };
+    }
+
+    function renderRecordSummary(report) {
+        const counts = reportCounts(report);
+        const firstLink = [...(report.sent || []), ...(report.scheduled || [])].find((event) => event.url);
+        selectedRecordEl.innerHTML = `
+            <div class="record-card featured">
+                <div class="record-main">
+                    <p class="eyebrow">${labels.selectedRecord}</p>
+                    <h2>${t(report.badge)}</h2>
+                    <p>${t(report.subtitle)}</p>
+                    <div class="record-stats" aria-label="Report summary">
+                        <span><strong>${counts.sent}</strong>${labels.newsletters}</span>
+                        <span><strong>${counts.scheduled}</strong>${labels.scheduled}</span>
+                        <span><strong>${counts.youtube}</strong>${labels.youtubeCount}</span>
+                        <span><strong>${counts.topics}</strong>${labels.topicsCount}</span>
+                    </div>
+                </div>
+                <div class="record-actions">
+                    <button class="primary-button" type="button" data-action="open-report">${labels.openThisReport}</button>
+                    ${firstLink ? `<a class="secondary-link" href="${firstLink.url}" target="_blank" rel="noopener">${labels.view}</a>` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderArchive() {
+        archiveGridEl.innerHTML = data.reports.map((report) => {
+            const counts = reportCounts(report);
+            const isLatest = report.id === data.latest;
+            return `
+                <article class="archive-card ${report.id === activeReportId ? 'active' : ''}">
+                    <div>
+                        <div class="archive-card-top">
+                            <h3>${t(report.nav)} 2026</h3>
+                            ${isLatest ? `<span>${labels.latest}</span>` : ''}
+                        </div>
+                        <p>${counts.sent} ${labels.newsletters} · ${counts.scheduled} ${labels.scheduled} · ${counts.youtube} ${labels.youtubeCount}</p>
+                    </div>
+                    <button class="text-button" type="button" data-report-id="${report.id}">${labels.viewRecord}</button>
+                </article>
+            `;
+        }).join('');
+    }
+
+    function setActiveReport(id, options = {}) {
         const report = data.reports.find((item) => item.id === id) || data.reports[0];
         activeReportId = report.id;
         renderReport(report);
+        renderRecordSummary(report);
+        renderArchive();
         document.querySelectorAll('[data-report-id]').forEach((button) => {
             button.classList.toggle('active', button.dataset.reportId === report.id);
         });
         history.replaceState(null, '', `#${report.id}`);
-        showView('report');
+        if (options.openReport) {
+            setReportMode(true);
+        } else {
+            setReportMode(false);
+            showView('hub');
+        }
     }
 
     function renderNav() {
@@ -147,7 +227,9 @@
 
     function showView(view) {
         const isWorkspace = view === 'workspace';
-        reportView.classList.toggle('active', !isWorkspace);
+        const isReport = view === 'report';
+        hubView.classList.toggle('active', !isWorkspace && !isReport);
+        reportView.classList.toggle('active', isReport);
         workspaceView.classList.toggle('active', isWorkspace);
         document.querySelectorAll('[data-view="workspace"]').forEach((item) => item.classList.toggle('active', isWorkspace));
     }
@@ -158,8 +240,8 @@
 
     function setReportMode(enabled) {
         document.body.classList.toggle('report-mode', enabled);
-        modeButton.textContent = document.body.classList.contains('report-mode') ? labels.exitReportMode : labels.reportMode;
-        showView('report');
+        modeButton.textContent = document.body.classList.contains('report-mode') ? labels.exitReportMode : labels.openReportMode;
+        showView(enabled ? 'report' : 'hub');
     }
 
     modeButton.addEventListener('click', () => {
@@ -168,6 +250,17 @@
 
     exitButton.addEventListener('click', () => {
         setReportMode(false);
+    });
+
+    document.addEventListener('click', (event) => {
+        const openButton = event.target.closest('[data-action="open-report"]');
+        if (openButton) {
+            setReportMode(true);
+        }
+        const archiveButton = event.target.closest('.archive-card [data-report-id]');
+        if (archiveButton) {
+            setActiveReport(archiveButton.dataset.reportId);
+        }
     });
 
     document.addEventListener('keydown', (event) => {
