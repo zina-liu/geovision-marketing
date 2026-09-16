@@ -6,29 +6,23 @@
             sent: 'Sent',
             scheduled: 'Scheduled',
             progress: 'In Production',
-            youtube: 'YouTube Updates',
             topics: 'Upcoming Newsletter Topics',
             upcomingNewsletters: 'Upcoming Newsletters',
             view: 'View',
-            watch: 'Watch Video',
             reportMode: 'Report mode',
             exitReportMode: 'Exit report mode',
-            wrongPassword: 'Wrong password',
-            noYoutube: 'No YouTube updates this month'
+            wrongPassword: 'Wrong password'
         },
         zh: {
             sent: '已寄送',
             scheduled: '已排程',
             progress: '製作中',
-            youtube: 'YouTube 影片更新',
             topics: '預計電子報主題',
             upcomingNewsletters: '預計發送電子報',
             view: '查看',
-            watch: '觀看影片',
-            reportMode: 'Report mode',
-            exitReportMode: '離開 report mode',
-            wrongPassword: '密碼錯誤',
-            noYoutube: '本月沒有影片更新'
+            reportMode: '報告模式',
+            exitReportMode: '離開報告模式',
+            wrongPassword: '密碼錯誤'
         }
     }[lang];
 
@@ -100,21 +94,6 @@
         return renderPresentationSection(className, title, iconSection('<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>'), body);
     }
 
-    function renderPresentationYoutube(report) {
-        if (!report.youtube || !report.youtube.length) return '';
-        const items = report.youtube.map((item) => `
-            <li class="item">
-                <div class="bullet-point"></div>
-                <div>
-                    <div class="item-text">${t(item.title)}</div>
-                    ${t(item.note) ? `<div class="item-note">${t(item.note)}</div>` : ''}
-                    <a href="${item.url}" class="file-link" target="_blank" rel="noopener">${labels.watch}</a>
-                </div>
-            </li>
-        `).join('');
-        return renderPresentationSection('section-youtube', t(report.youtubeTitle) || labels.youtube, iconSection('<path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>'), `<div class="glass-panel"><ul class="item-list">${items}</ul></div>`);
-    }
-
     function renderPresentationTopics(report) {
         const topics = t(report.topics);
         if (!topics || !topics.length) return '';
@@ -134,7 +113,6 @@
             <div class="content-grid">
                 ${renderPresentationEventSection(groups.sent, 'section-newsletter', sentTitle)}
                 ${renderPresentationEventSection(groups.upcoming, 'section-scheduled', scheduledTitle)}
-                ${renderPresentationYoutube(report)}
                 ${renderPresentationTopics(report)}
             </div>
         `;
@@ -166,22 +144,6 @@
         `;
     }
 
-    function renderRecordYoutube(report) {
-        if (!report.youtube || !report.youtube.length) {
-            return renderRecordSection(t(report.youtubeTitle) || labels.youtube, '', labels.noYoutube);
-        }
-        const rows = report.youtube.map((item) => `
-            <div class="list-row">
-                <div class="list-info">
-                    <div class="list-title">${t(item.title)}</div>
-                    ${t(item.note) ? `<div class="list-meta">${t(item.note)}</div>` : ''}
-                </div>
-                <a href="${item.url}" class="btn-outline" target="_blank" rel="noopener">${labels.watch}</a>
-            </div>
-        `).join('');
-        return renderRecordSection(t(report.youtubeTitle) || labels.youtube, rows);
-    }
-
     function renderRecordTopics(report) {
         const topics = t(report.topics);
         if (!topics || !topics.length) return '';
@@ -206,7 +168,6 @@
             </header>
             ${sentSection}
             ${scheduledSection}
-            ${renderRecordYoutube(report)}
             ${renderRecordTopics(report)}
         `;
     }

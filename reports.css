@@ -669,7 +669,6 @@ body {
 
 .section-newsletter { background: var(--gradient-1); }
 .section-scheduled { background: var(--gradient-5); }
-.section-youtube { background: var(--gradient-3); }
 .section-queue { background: linear-gradient(135deg, #334155 0%, #0f172a 100%); }
 
 .section-title {

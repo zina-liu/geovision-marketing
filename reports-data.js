@@ -22,7 +22,6 @@ window.REPORT_DATA = {
                 { date: '10/28', month: { en: 'OCT', zh: '10 月' }, title: { en: 'Bangladesh Parliament', zh: '孟加拉國會' }, subtitle: { en: 'Rescheduled from 10/14', zh: '原 10/14' }, status: 'scheduled' },
                 { date: '11/11', month: { en: 'NOV', zh: '11 月' }, title: { en: 'AI Nano Server', zh: 'AI Nano Server' }, status: 'scheduled' }
             ],
-            youtube: [],
             topics: ['Cloud PoE Management', 'AGX', 'Cloud NVR', 'Body Worn']
         },
         {
@@ -33,7 +32,6 @@ window.REPORT_DATA = {
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
             sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
             scheduledTitle: { en: 'Upcoming Newsletters', zh: '預計發送電子報' },
-            youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
                 { date: '7/29', month: { en: 'JUL', zh: '7 月' }, title: { en: 'Australia Trade Show Edition', zh: '澳洲展會特輯' }, subtitle: { en: 'Trade show edition for the Australia market', zh: 'Australia Trade Show Edition' }, status: 'sent', url: 'https://www.geovision.com.tw/spotlight/sec2026/desktop/index.html' },
@@ -46,10 +44,6 @@ window.REPORT_DATA = {
                 { date: '9/30', month: { en: 'SEP', zh: '9 月' }, title: { en: 'GV-Eye', zh: 'GV-Eye' }, status: 'scheduled' },
                 { date: '10/14', month: { en: 'OCT', zh: '10 月' }, title: { en: 'Bangladesh Parliament', zh: '孟加拉國會' }, status: 'scheduled' }
             ],
-            youtube: [
-                { title: { en: 'How to Setup Enter Area on GV AI Camera via GV-VMS V20', zh: 'How to Setup Enter Area on GV AI Camera via GV-VMS V20' }, note: { en: 'GV AI Camera enter-area setup tutorial.', zh: 'GV AI Camera enter-area setup tutorial.' }, url: 'https://www.youtube.com/watch?v=-_G0dwrJ-Qo' },
-                { title: { en: 'GV Product Release Notice for July 2026', zh: 'GV Product Release Notice for July 2026' }, note: { en: 'Product release notice video for July 2026.', zh: 'Product release notice video for July 2026.' }, url: 'https://www.youtube.com/watch?v=kcurcMUVNxs' }
-            ],
             topics: ['Cloud PoE Management', 'AGX', 'Cloud NVR', 'Body Worn']
         },
         {
@@ -59,7 +53,6 @@ window.REPORT_DATA = {
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
             sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
-            youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
                 { date: '7/8', month: { en: 'JUL', zh: '7 月' }, title: { en: 'Cloud Visitor Management', zh: '雲端訪客管理' }, subtitle: { en: 'Cloud Visitor Management', zh: 'Cloud Visitor Management' }, status: 'sent', url: 'https://www.geovision.com.tw/spotlight/visitorentry/desktop/index.html' },
@@ -69,9 +62,6 @@ window.REPORT_DATA = {
                 { date: '8/19', month: { en: 'AUG', zh: '8 月' }, title: { en: 'West Dorset Leisure Holidays Case Study', zh: '英國度假營區案例' }, subtitle: { en: 'UK leisure holiday park case study', zh: 'West Dorset Leisure Holidays' }, status: 'scheduled' }
             ],
             scheduled: [],
-            youtube: [
-                { title: { en: 'How to Set Up Master-Slave Mode in GV-AI FR', zh: '如何在 GV-AI FR 設定主從模式' }, note: { en: 'GV-AI FR master-slave mode setup tutorial.', zh: 'How to Set Up Master-Slave Mode in GV-AI FR' }, url: 'https://www.youtube.com/watch?v=mc2Uue4c2e4' }
-            ],
             topics: ['GV-Eye', 'Cloud PoE Management', 'AGX', 'Cloud NVR', 'Body Worn']
         },
         {
@@ -81,7 +71,6 @@ window.REPORT_DATA = {
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
             sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
-            youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
                 { date: '6/3', month: { en: 'JUN', zh: '6 月' }, title: { en: 'June Product Release Newsletter', zh: '6 月新品報' }, subtitle: { en: 'New product updates for June', zh: '6 月新品更新' }, status: 'sent', url: 'https://www.geovision.com.tw/_upload/doc/re/2026-06-release.html' },
@@ -90,10 +79,6 @@ window.REPORT_DATA = {
                 { date: '7/8', month: { en: 'JUL', zh: '7 月' }, title: { en: 'Cloud Visitor Management', zh: '雲端訪客管理' }, subtitle: { en: 'Cloud-based visitor management workflow', zh: '訪客管理流程內容' }, status: 'progress' }
             ],
             scheduled: [],
-            youtube: [
-                { title: { en: 'How to Set Up People Counting with GV-VMS 20 and GV-Web Report', zh: '如何透過 GV-VMS 20 與 GV-Web Report 設定人流統計' }, note: { en: 'Setup tutorial for people counting with GV-VMS 20 and GV-Web Report.', zh: '人流統計設定教學影片' }, url: 'https://www.youtube.com/watch?v=e70EuxygWgw' },
-                { title: { en: 'How to Integrate GV-IP Speaker with AI Event on GV-VMS V20', zh: '如何在 GV-VMS V20 上整合 GV-IP Speaker 與 AI 事件' }, note: { en: 'Integration tutorial for GV-IP Speaker and AI events on GV-VMS V20.', zh: 'GV-IP Speaker 與 AI 事件整合教學影片' }, url: 'https://www.youtube.com/watch?v=18SJ_t52wec' }
-            ],
             topics: { en: ['SNVR', 'GV-Eye', 'Cloud Web Report', 'Cloud PoE Management', 'AGX', 'Cloud NVR'], zh: ['SNVR', 'GV-Eye', '雲端報表', '雲端 PoE 管理', 'AGX', '雲端 NVR'] }
         },
         {
@@ -111,7 +96,6 @@ window.REPORT_DATA = {
                 { date: '5/26', month: { en: 'MAY', zh: '5 月' }, title: { en: 'Cloud Access Control', zh: '雲端門禁管理' }, subtitle: { en: 'Content in progress', zh: '內容製作中' }, status: 'progress' }
             ],
             scheduled: [],
-            youtube: [],
             topics: { en: ['3D People Counting for Retail', 'Cloud PoE Management', 'Cloud Web Report', 'AGX', 'Cloud NVR'], zh: ['零售 3D 客流計數', '雲端 PoE 管理', '雲端報表', 'AGX', '雲端 NVR'] }
         }
     ]
