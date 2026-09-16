@@ -8,6 +8,7 @@
             progress: 'In Production',
             youtube: 'YouTube Updates',
             topics: 'Upcoming Newsletter Topics',
+            upcomingNewsletters: 'Upcoming Newsletters',
             view: 'View',
             watch: 'Watch Video',
             reportMode: 'Report mode',
@@ -21,6 +22,7 @@
             progress: '製作中',
             youtube: 'YouTube 影片更新',
             topics: '預計電子報主題',
+            upcomingNewsletters: '預計發送電子報',
             view: '查看',
             watch: '觀看影片',
             reportMode: 'Report mode',
@@ -84,8 +86,15 @@
         `;
     }
 
-    function renderPresentationEventSection(report, key, className, title) {
-        const events = report[key] || [];
+    function newsletterGroups(report) {
+        const events = [...(report.sent || []), ...(report.scheduled || [])];
+        return {
+            sent: events.filter((event) => event.status === 'sent'),
+            upcoming: events.filter((event) => event.status !== 'sent')
+        };
+    }
+
+    function renderPresentationEventSection(events, className, title) {
         if (!events.length) return '';
         const body = `<div class="calendar-grid"><div class="calendar-month"><div class="calendar-header">${iconCalendar()}<span>${title}</span></div><div class="calendar-events">${events.map(renderPresentationEvent).join('')}</div></div></div>`;
         return renderPresentationSection(className, title, iconSection('<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>'), body);
@@ -113,6 +122,9 @@
     }
 
     function renderPresentation(report) {
+        const groups = newsletterGroups(report);
+        const sentTitle = t(report.sentTitle);
+        const scheduledTitle = t(report.scheduledTitle) || labels.upcomingNewsletters;
         presentationEl.innerHTML = `
             <header class="report-header">
                 <div class="date-badge">${iconCalendar()}${t(report.badge)}</div>
@@ -120,8 +132,8 @@
                 <p>${t(report.subtitle)}</p>
             </header>
             <div class="content-grid">
-                ${renderPresentationEventSection(report, 'sent', 'section-newsletter', t(report.sentTitle))}
-                ${renderPresentationEventSection(report, 'scheduled', 'section-scheduled', t(report.scheduledTitle))}
+                ${renderPresentationEventSection(groups.sent, 'section-newsletter', sentTitle)}
+                ${renderPresentationEventSection(groups.upcoming, 'section-scheduled', scheduledTitle)}
                 ${renderPresentationYoutube(report)}
                 ${renderPresentationTopics(report)}
             </div>
@@ -178,16 +190,21 @@
     }
 
     function renderRecord(report) {
-        const scheduled = report.scheduled || [];
-        const scheduledSection = scheduled.length
-            ? renderRecordSection(t(report.scheduledTitle), `<div class="record-event-list">${scheduled.map(renderRecordEvent).join('')}</div>`)
+        const groups = newsletterGroups(report);
+        const sentTitle = t(report.sentTitle);
+        const scheduledTitle = t(report.scheduledTitle) || labels.upcomingNewsletters;
+        const sentSection = groups.sent.length
+            ? renderRecordSection(sentTitle, `<div class="record-event-list">${groups.sent.map(renderRecordEvent).join('')}</div>`)
+            : '';
+        const scheduledSection = groups.upcoming.length
+            ? renderRecordSection(scheduledTitle, `<div class="record-event-list">${groups.upcoming.map(renderRecordEvent).join('')}</div>`)
             : '';
         recordEl.innerHTML = `
             <header class="record-header">
                 <p>${t(report.badge)}</p>
                 <h1>${t(report.nav)} 2026</h1>
             </header>
-            ${renderRecordSection(t(report.sentTitle), `<div class="record-event-list">${(report.sent || []).map(renderRecordEvent).join('')}</div>`)}
+            ${sentSection}
             ${scheduledSection}
             ${renderRecordYoutube(report)}
             ${renderRecordTopics(report)}

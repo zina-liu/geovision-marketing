@@ -7,8 +7,8 @@ window.REPORT_DATA = {
             badge: { en: 'Report Month - September 2026', zh: '報告月份 • 2026年9月' },
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
-            sentTitle: { en: 'Newsletter Schedule', zh: '電子報主題與排程' },
-            scheduledTitle: { en: 'Scheduled Newsletter Releases', zh: '預計電子報排程' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
+            scheduledTitle: { en: 'Upcoming Newsletters', zh: '預計發送電子報' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
                 { date: '8/19', month: { en: 'AUG', zh: '8 月' }, title: { en: 'SNVR', zh: 'SNVR' }, subtitle: { en: 'GV-GNVRC0810-P', zh: 'GV-GNVRC0810-P' }, status: 'sent', url: 'https://www.geovision.com.tw/spotlight/smarternvr/' },
@@ -31,8 +31,8 @@ window.REPORT_DATA = {
             badge: { en: 'Report Month - August 2026', zh: '報告月份 • 2026年8月' },
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
-            sentTitle: { en: 'Newsletter Schedule', zh: '電子報主題與排程' },
-            scheduledTitle: { en: 'Scheduled Newsletter Releases', zh: '預計電子報排程' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
+            scheduledTitle: { en: 'Upcoming Newsletters', zh: '預計發送電子報' },
             youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
@@ -58,7 +58,7 @@ window.REPORT_DATA = {
             badge: { en: 'Report Month - July 2026', zh: '報告月份 • 2026年7月' },
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
-            sentTitle: { en: 'Newsletter Schedule', zh: '電子報主題與排程' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
             youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
@@ -80,7 +80,7 @@ window.REPORT_DATA = {
             badge: { en: 'Report Month - June 2026', zh: '報告月份 • 2026年6月' },
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
-            sentTitle: { en: 'Newsletter Schedule', zh: '電子報主題與排程' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
             youtubeTitle: { en: 'YouTube Updates', zh: 'YouTube 影片更新' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
@@ -102,7 +102,7 @@ window.REPORT_DATA = {
             badge: { en: 'Report Month - May 2026', zh: '報告月份 • 2026年5月' },
             title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
             subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
-            sentTitle: { en: 'Newsletter Schedule', zh: '電子報發送日' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
             topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
             sent: [
                 { date: '4/29', month: { en: 'APR', zh: '4 月' }, title: { en: 'Wide Angle Camera', zh: '廣角攝影機' }, subtitle: { en: 'Wide Angle Camera / Panoramic', zh: '廣角 / 全景攝影機' }, status: 'sent', url: 'https://www.geovision.com.tw/spotlight/panoramic/desktop/index.html' },
