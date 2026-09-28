@@ -24,9 +24,12 @@
     }
 
     main {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       width: min(100%, 660px);
       overflow: hidden;
-      background: #032c4a;
+      background: #dedede;
     }
 
     img {
@@ -35,6 +38,12 @@
       height: auto;
       margin: 0;
       border: 0;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        gap: 6px;
+      }
     }
   </style>
 </head>
