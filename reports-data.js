@@ -1,6 +1,29 @@
 window.REPORT_DATA = {
-    latest: '2026-09',
+    latest: '2026-10',
     reports: [
+        {
+            id: '2026-10',
+            nav: { en: 'October', zh: '10 月' },
+            badge: { en: 'Report Month - October 2026', zh: '報告月份 • 2026年10月' },
+            title: { en: 'Marketing Monthly Report', zh: '行銷月報' },
+            subtitle: { en: 'Business Report - Marketing Monthly Report', zh: 'Marketing Monthly Report • 業務月報' },
+            sentTitle: { en: 'Sent Newsletters', zh: '已發送電子報' },
+            scheduledTitle: { en: 'Upcoming Newsletters', zh: '預計發送電子報' },
+            topicsTitle: { en: 'Upcoming Newsletter Topics', zh: '預計電子報主題' },
+            sent: [
+                { date: '9/30', month: { en: 'SEP', zh: '9 月' }, title: { en: 'GV-Eye', zh: 'GV-Eye' }, status: 'sent', url: 'https://www.geovision.com.tw/_upload/doc/re/2026-0930-event.html' },
+                { date: '10/6', month: { en: 'OCT', zh: '10 月' }, title: { en: 'October Product Release Newsletter', zh: '10 月新品報' }, status: 'sent', url: 'https://www.geovision.com.tw/_upload/doc/re/2026-10-release.html' },
+                { date: '10/14', month: { en: 'OCT', zh: '10 月' }, title: { en: 'France Trade Show Edition', zh: '法國展會特輯' }, status: 'sent', url: 'https://www.geovision.com.tw/_upload/doc/re/2026-1015-event.html' }
+            ],
+            scheduled: [
+                { date: '10/28', month: { en: 'OCT', zh: '10 月' }, title: { en: 'AI Nano Server', zh: 'AI Nano Server' }, subtitle: { en: 'Product newsletter', zh: '產品電子報' }, status: 'scheduled' },
+                { date: '11/11', month: { en: 'NOV', zh: '11 月' }, title: { en: 'Bangladesh Parliament', zh: '孟加拉國會' }, subtitle: { en: 'Case study', zh: '案例分享' }, status: 'scheduled' }
+            ],
+            topics: {
+                en: ['CB Pro Plus - 16CH (planned for December)', 'Access Control Bundle Kit (planned for December)', 'G1 Box', 'Cloud PoE Management', 'AGX', 'Cloud NVR', 'Body-Worn', 'Decoder Box', 'SNVR Bundle Kit'],
+                zh: ['CB Pro Plus - 16CH（預計 12 月）', 'Access Control Bundle Kit（預計 12 月）', 'G1 Box', 'Cloud PoE Management', 'AGX', 'Cloud NVR', 'Body-Worn', 'Decoder Box', 'SNVR Bundle Kit']
+            }
+        },
         {
             id: '2026-09',
             nav: { en: 'September', zh: '9 月' },
