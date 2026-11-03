@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GeoVision Access Control Bundle Kits — ready-to-order hardware and management software packages.">
+  <title>GeoVision Access Control Bundle Kits</title>
+  <style>
+    :root {
+      --navy: #061a39;
+      --navy-2: #0a2750;
+      --blue: #0879e8;
+      --ink: #071b43;
+      --text: #33425e;
+      --line: #d6e4f3;
+      --pale: #edf4fd;
+      --page: #eaf1f8;
+      --white: #fff;
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; }
+    html { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--page);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    .shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin-inline: auto;
+    }
+
+    .hero-section {
+      padding: 32px 0;
+      background: #09182c;
+    }
+    .hero {
+      min-height: 430px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 22px;
+      background: var(--navy);
+      box-shadow: 0 22px 60px rgba(0,0,0,.22);
+    }
+    .hero-copy {
+      min-width: 0;
+      padding: clamp(32px, 3.6vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--navy);
+    }
+    .brand {
+      width: clamp(150px, 18vw, 205px);
+      margin-bottom: clamp(36px, 4vw, 48px);
+    }
+    .hero h1 {
+      max-width: 620px;
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(2.15rem, 2.7vw, 2.35rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+    .accent {
+      width: 52px;
+      height: 5px;
+      margin: 26px 0 22px;
+      background: #1d9cff;
+    }
+    .hero-lead {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-size: clamp(1.05rem, 1.45vw, 1.3rem);
+      line-height: 1.25;
+      font-weight: 500;
+    }
+    .kit-list {
+      margin: 0;
+      color: #dfeeff;
+      font-size: clamp(.88rem, 1.1vw, 1rem);
+      line-height: 1.5;
+      letter-spacing: .01em;
+    }
+    .hero-visual { position: relative; min-width: 0; overflow: hidden; background: #d9e6f2; }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0 auto 0 0;
+      width: 14px;
+      background: var(--navy);
+      pointer-events: none;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    .kit-section {
+      padding: clamp(18px, 2.2vw, 26px) 0;
+      background: var(--page);
+    }
+    .kit-card {
+      padding: clamp(28px, 3.5vw, 44px);
+      overflow: hidden;
+      border: 1px solid #dbe7f3;
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: 0 18px 45px rgba(29,65,105,.10);
+    }
+    .kit-header { text-align: center; }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+    .kit-header h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+    }
+    .kit-header h2 span { display: inline; }
+    .kit-subtitle {
+      margin: 12px 0 30px;
+      color: var(--blue);
+      font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+      font-weight: 700;
+    }
+    .product-scene {
+      width: 100%;
+      aspect-ratio: 1096 / 321;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #dbe9f5;
+    }
+    .product-scene img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 32px;
+      margin: 28px 0 30px;
+    }
+    .feature {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 86px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: clamp(.92rem, 1.05vw, 1rem);
+      line-height: 1.42;
+    }
+    .feature-index {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #cfe1f5;
+      border-radius: 50%;
+      color: var(--blue);
+      background: #eef6ff;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .feature > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+
+    .subscription-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+      align-items: center;
+      padding: clamp(26px, 4vw, 46px);
+      border-radius: 18px;
+      background: var(--pale);
+    }
+    .subscription-label {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+    .subscription-panel h3 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2vw, 1.85rem);
+      line-height: 1.08;
+    }
+    .duration {
+      color: var(--blue);
+      font-size: clamp(3.4rem, 5vw, 4.8rem);
+      font-weight: 800;
+      line-height: .85;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+    .subscription-detail {
+      min-width: 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--blue);
+      color: var(--ink);
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      line-height: 1.22;
+    }
+    .subscription-detail strong { display: block; margin-bottom: 8px; }
+    .subscription-value {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .ideal {
+      margin: 18px 0 0;
+      padding: 18px 24px;
+      border-radius: 14px;
+      color: var(--text);
+      background: #f0f6fd;
+      font-size: clamp(.98rem, 1.35vw, 1.1rem);
+      line-height: 1.45;
+    }
+    .ideal strong { color: var(--blue); }
+
+    .kit-section.alt { background: #f4f8fc; }
+    .product-scene.tall { aspect-ratio: 1098 / 586; }
+
+    .readers-section {
+      padding: clamp(42px, 5vw, 58px) 0;
+      background: var(--white);
+    }
+    .section-heading { text-align: center; }
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2.05rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+    }
+    .section-rule { width: 84px; height: 5px; margin: 24px auto 28px; background: var(--blue); }
+    .section-heading p {
+      margin: 0 0 38px;
+      color: var(--text);
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      line-height: 1.45;
+    }
+    .reader-list { display: grid; gap: 20px; }
+    .reader-card {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 28px;
+      align-items: center;
+      padding: 26px 30px 26px 36px;
+      border: 1px solid #cfe0f2;
+      border-radius: 20px;
+      background: var(--pale);
+    }
+    .reader-card h3 { margin: 0 0 10px; font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.15; }
+    .reader-model { margin: 0 0 14px; color: var(--blue); font-size: 1.05rem; font-weight: 800; letter-spacing: .02em; }
+    .reader-copy { margin: 0; color: var(--text); font-size: clamp(1rem, 1.65vw, 1.25rem); line-height: 1.45; }
+    .reader-image { width: 175px; height: 180px; object-fit: cover; justify-self: end; mix-blend-mode: multiply; }
+
+    .about-section { padding: clamp(42px, 5vw, 58px) 0; background: #09182c; color: var(--white); }
+    .about-section .shell { width: min(calc(100% - 64px), 680px); }
+    .about-eyebrow { margin: 0 0 18px; color: #55adff; font-size: .95rem; font-weight: 800; letter-spacing: .2em; }
+    .about-section h2 { max-width: 700px; margin: 0; font-size: clamp(1.75rem, 2.7vw, 2.45rem); line-height: 1.12; letter-spacing: -.025em; }
+    .about-card {
+      margin-top: 34px;
+      padding: clamp(26px, 4vw, 44px);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      background: rgba(255,255,255,.07);
+    }
+    .about-card h3 { margin: 0 0 14px; color: #55adff; font-size: clamp(1.35rem, 2vw, 1.8rem); }
+    .about-card p { max-width: 1050px; margin: 0; color: #dbe8f7; font-size: clamp(1rem, 1.65vw, 1.25rem); line-height: 1.65; }
+    .footer-brand { width: 190px; margin: 38px 0 0 auto; }
+
+    @media (max-width: 900px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .hero-copy { padding: 42px 36px; }
+      .hero h1 { font-size: clamp(2.15rem, 4.5vw, 2.35rem); }
+      .brand { width: clamp(155px, 20vw, 210px); margin-bottom: 40px; }
+      .hero-lead { font-size: clamp(1.05rem, 2vw, 1.45rem); }
+      .kit-list { font-size: clamp(.85rem, 1.5vw, 1.05rem); }
+      .features { grid-template-columns: 1fr; }
+      .subscription-panel { grid-template-columns: 1fr; }
+      .subscription-detail { padding: 22px 0 0; border-left: 0; border-top: 2px solid var(--blue); }
+      .reader-card { grid-template-columns: minmax(0, 1fr) 150px; }
+      .reader-image { width: 145px; height: 160px; }
+    }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { min-height: 520px; }
+      .hero-visual { height: min(76vw, 500px); }
+    }
+
+    @media (max-width: 560px) {
+      html, body, main, main > section { width: 100%; max-width: 100%; overflow-x: hidden; }
+      .hero-section { padding: 0; }
+      .hero-section .shell { width: 100%; }
+      .hero { min-height: 0; border: 0; border-radius: 0; box-shadow: none; }
+      .hero-copy { min-height: 500px; padding: 36px 24px 40px; }
+      .hero h1 { font-size: clamp(2.4rem, 11.8vw, 3rem); }
+      .hero-visual { height: 74vw; min-height: 310px; max-height: 430px; }
+      .hero-visual img { object-position: 46% bottom; }
+      .kit-section { padding: 16px 0 24px; }
+      .kit-section .shell,
+      .kit-card {
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+        margin-inline: auto;
+      }
+      .kit-card { padding: 26px 18px; border-radius: 18px; }
+      .kit-header h2 { font-size: 1.9rem; line-height: 1.08; }
+      .kit-header h2 span { display: block; }
+      .kit-subtitle { margin-bottom: 22px; font-size: 1.1rem; }
+      .kit-header, .kit-header h2, .kit-subtitle { max-width: 100%; overflow-wrap: anywhere; }
+      .product-scene { aspect-ratio: 16 / 9; }
+      .product-scene img { object-position: 52% center; }
+      .feature { width: 100%; grid-template-columns: 42px minmax(0, 1fr); gap: 13px; min-height: 76px; font-size: .94rem; overflow-wrap: anywhere; }
+      .features, .feature, .subscription-panel, .subscription-value, .ideal { min-width: 0; max-width: 100%; }
+      .feature-index { width: 42px; height: 42px; }
+      .subscription-panel { padding: 26px 22px; }
+      .subscription-value { grid-template-columns: 1fr; gap: 18px; }
+      .duration { font-size: 4.2rem; }
+      .ideal { padding: 16px 18px; }
+      .product-scene.tall { aspect-ratio: 16 / 10; }
+      .readers-section { padding: 44px 0; }
+      .readers-section .shell { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
+      .about-section .shell { width: calc(100vw - 64px); max-width: calc(100vw - 64px); }
+      .section-heading h2 { font-size: 2.25rem; }
+      .section-heading p { margin-bottom: 28px; font-size: 1rem; }
+      .reader-card { grid-template-columns: minmax(0, 1fr) 96px; gap: 12px; padding: 20px 16px 20px 20px; border-radius: 16px; }
+      .reader-card > div { min-width: 0; }
+      .reader-card h3 { font-size: 1.2rem; }
+      .reader-model { margin-bottom: 10px; font-size: .9rem; }
+      .reader-copy { font-size: .9rem; }
+      .reader-image { width: 96px; height: 126px; }
+      .about-section { padding: 48px 0; }
+      .about-section h2 { font-size: 1.85rem; }
+      .reader-card h3, .reader-copy, .about-section h2, .about-card p { overflow-wrap: anywhere; }
+      .about-card { margin-top: 26px; padding: 24px 20px; }
+      .footer-brand { width: 155px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero-section" aria-labelledby="page-title">
+      <div class="shell hero">
+        <div class="hero-copy">
+          <img class="brand" src="rwd-assets/geovision-logo-white.png" alt="GeoVision">
+          <h1 id="page-title">Access Control<br>Bundle Kits<br>Now Available</h1>
+          <div class="accent" aria-hidden="true"></div>
+          <p class="hero-lead">Three Ready-to-Order Kits</p>
+          <p class="kit-list">1-Door Cloud&nbsp; · &nbsp;2-Door&nbsp; · &nbsp;4-Door</p>
+        </div>
+        <div class="hero-visual">
+          <img src="rwd-assets/hero-products.jpg" alt="GeoVision access control hardware for 1-door, 2-door and 4-door bundle kits">
+        </div>
+      </div>
+    </section>
+
+    <section class="kit-section" aria-labelledby="kit-01-title">
+      <article class="shell kit-card">
+        <header class="kit-header">
+          <p class="eyebrow">KIT 01</p>
+          <h2 id="kit-01-title"><span>1-Door Cloud</span> <span>Access Control Kit</span></h2>
+          <p class="kit-subtitle">All-in-One Cloud Entry Security</p>
+        </header>
+
+        <div class="product-scene">
+          <img src="rwd-assets/kit-01-product.jpg" alt="GV-Cloud management screens, access cards and GeoVision all-in-one door controller">
+        </div>
+
+        <div class="features" aria-label="1-Door Cloud kit features">
+          <div class="feature"><span class="feature-index">01</span><span>All-in-one device with controller, reader, camera, and intercom</span></div>
+          <div class="feature"><span class="feature-index">02</span><span>Cloud monitoring with real-time events and remote lockdown</span></div>
+          <div class="feature"><span class="feature-index">03</span><span>2 MP video intercom with local Micro SD storage</span></div>
+          <div class="feature"><span class="feature-index">04</span><span>Includes 25 access cards and 1-year cloud subscription</span></div>
+        </div>
+
+        <section class="subscription-panel" aria-labelledby="subscription-title">
+          <div>
+            <p class="subscription-label">INCLUDED IN THIS KIT</p>
+            <h3 id="subscription-title">GV-Cloud Access Control Subscription</h3>
+          </div>
+          <div class="subscription-value">
+            <div class="duration">1 YEAR</div>
+            <div class="subscription-detail"><strong>GV-Cloud</strong>Log + Video Snapshot<br>Subscription</div>
+          </div>
+        </section>
+
+        <p class="ideal"><strong>Ideal For:</strong> Small offices, retail stores, clinics, and standalone entrances.</p>
+      </article>
+    </section>
+
+    <section class="kit-section alt" aria-labelledby="kit-02-title">
+      <article class="shell kit-card">
+        <header class="kit-header">
+          <p class="eyebrow">KIT 02</p>
+          <h2 id="kit-02-title"><span>2-Door</span> <span>Access Control Kit</span></h2>
+          <p class="kit-subtitle">Reliable 2-Door Access with Video Integration</p>
+        </header>
+        <div class="product-scene">
+          <img src="rwd-assets/kit-02-product-fixed.png" alt="GeoVision 2-door controller, two readers, access card and management software">
+        </div>
+        <div class="features" aria-label="2-Door kit features">
+          <div class="feature"><span class="feature-index">01</span><span>Includes controller, 2 readers, and 25 access cards</span></div>
+          <div class="feature"><span class="feature-index">02</span><span>Supports 2-door two-way or 4-door one-way control</span></div>
+          <div class="feature"><span class="feature-index">03</span><span>Video integration with GV-VMS and built-in tamper alarm</span></div>
+          <div class="feature"><span class="feature-index">04</span><span>Includes GV-ASManager, GV-ASWeb, and GV-Access app</span></div>
+        </div>
+        <p class="ideal"><strong>Ideal For:</strong> Medium-sized offices and dual-entrance control.</p>
+      </article>
+    </section>
+
+    <section class="kit-section" aria-labelledby="kit-03-title">
+      <article class="shell kit-card">
+        <header class="kit-header">
+          <p class="eyebrow">KIT 03</p>
+          <h2 id="kit-03-title"><span>4-Door</span> <span>Access Control Kit</span></h2>
+          <p class="kit-subtitle">Centralized Access for Multi-Door Sites</p>
+        </header>
+        <div class="product-scene tall">
+          <img src="rwd-assets/kit-03-product-fixed.png" alt="GeoVision 4-door controller, four readers, access card and management software">
+        </div>
+        <div class="features" aria-label="4-Door kit features">
+          <div class="feature"><span class="feature-index">01</span><span>Includes controller, 4 readers, and 25 access cards</span></div>
+          <div class="feature"><span class="feature-index">02</span><span>Built for centralized multi-door access control</span></div>
+          <div class="feature"><span class="feature-index">03</span><span>Video integration with GV-VMS</span></div>
+          <div class="feature"><span class="feature-index">04</span><span>Includes GV-ASManager, GV-ASWeb, and GV-Access app</span></div>
+        </div>
+        <p class="ideal"><strong>Ideal For:</strong> Large offices, multi-floor buildings, and industrial facilities.</p>
+      </article>
+    </section>
+
+    <section class="readers-section" aria-labelledby="readers-title">
+      <div class="shell">
+        <header class="section-heading">
+          <h2 id="readers-title">Optional Readers</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p>Choose the access method that fits each installation.</p>
+        </header>
+        <div class="reader-list">
+          <article class="reader-card">
+            <div><h3>Scrambled Keypad + Reader</h3><p class="reader-model">GV-RKR1355</p><p class="reader-copy">Randomized PIN keypad with RFID card authentication.</p></div>
+            <img class="reader-image" src="rwd-assets/reader-rkr1355.jpg" alt="GV-RKR1355 scrambled keypad reader">
+          </article>
+          <article class="reader-card">
+            <div><h3>QR Code &amp; Mobile Access Reader</h3><p class="reader-model">GV-QR1352</p><p class="reader-copy">QR code and contactless access for visitors and mobile use.</p></div>
+            <img class="reader-image" src="rwd-assets/reader-qr1352.jpg" alt="GV-QR1352 QR code and mobile access reader">
+          </article>
+          <article class="reader-card">
+            <div><h3>DESFire Keypad Reader</h3><p class="reader-model">GV-RKD1352</p><p class="reader-copy">MIFARE DESFire and built-in keypad for Card + PIN access.</p></div>
+            <img class="reader-image" src="rwd-assets/reader-rkd1352.jpg" alt="GV-RKD1352 DESFire keypad reader">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="shell">
+        <p class="about-eyebrow">ABOUT GEOVISION</p>
+        <h2 id="about-title">GeoVision is a global Enterprise VMS provider and Application Specialist for Critical Infrastructure.</h2>
+        <div class="about-card">
+          <h3>Service &amp; Reliability</h3>
+          <p>GeoVision is a global application specialist dedicated to mission critical security. We provide 10 hour US based phone support and 24/5 live chat to support enterprise partners in transportation, healthcare, and public sectors.</p>
+        </div>
+        <img class="footer-brand" src="rwd-assets/geovision-logo-white.png" alt="GeoVision">
+      </div>
+    </section>
+  </main>
+</body>
+</html>
