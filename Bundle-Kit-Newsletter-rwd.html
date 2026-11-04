@@ -226,6 +226,28 @@
       line-height: 1.22;
     }
     .subscription-detail strong { display: block; margin-bottom: 8px; }
+    .subscription-detail ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: clamp(.9rem, 1.2vw, 1rem);
+      line-height: 1.45;
+    }
+    .subscription-detail li {
+      position: relative;
+      padding-left: 16px;
+    }
+    .subscription-detail li + li { margin-top: 4px; }
+    .subscription-detail li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .63em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
     .subscription-value {
       min-width: 0;
       display: grid;
@@ -410,7 +432,14 @@
           </div>
           <div class="subscription-value">
             <div class="duration">1 YEAR</div>
-            <div class="subscription-detail"><strong>GV-Cloud</strong>Log + Video Snapshot<br>Subscription</div>
+            <div class="subscription-detail">
+              <strong>Key Features</strong>
+              <ul>
+                <li>Real-Time Live View + Local Playback</li>
+                <li>Comprehensive Door Event Logs</li>
+                <li>Instant Video Snapshots</li>
+              </ul>
+            </div>
           </div>
         </section>
 
