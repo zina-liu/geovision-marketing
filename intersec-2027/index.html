@@ -100,15 +100,15 @@
     .meeting-button { min-height: 54px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 14px 32px; border-radius: 999px; background: #d9a548; color: var(--navy); font-size: 1.1rem; font-weight: 700; box-shadow: 0 12px 24px rgba(0, 0, 0, .18); }
     .meeting-button span { color: var(--navy); font-size: 1.5rem; line-height: 1; }
 
-    .about { padding-bottom: 0; }
-    .about-panel { padding: 48px; border-radius: 30px 30px 0 0; background: var(--navy); color: white; }
-    .about-panel h2 { max-width: 900px; color: white; }
-    .about-panel .eyebrow { color: #e4b760; }
-    .service-card { margin-top: 30px; padding: 28px; border-radius: 22px; background: rgba(255,255,255,.09); }
-    .service-card h3 { color: #e4b760; }
-    .service-card p { max-width: 860px; margin-bottom: 0; color: #e7edf5; }
-    .brand-row { display: flex; justify-content: flex-end; margin-top: 28px; }
-    .brand-row img { width: 170px; }
+    .about { padding: 48px 0 30px; background: var(--ivory); }
+    .about-panel { padding: 34px 38px; border-radius: 24px; background: var(--white); color: var(--navy); box-shadow: var(--shadow); }
+    .about-panel h2 { max-width: 760px; color: var(--navy); font-size: clamp(1.45rem, 2.4vw, 2rem); line-height: 1.2; letter-spacing: -.015em; }
+    .about-panel .eyebrow { color: var(--gold); }
+    .service-card { margin-top: 22px; padding: 22px 24px; border-radius: 18px; background: var(--surface); }
+    .service-card h3 { color: var(--gold); font-size: 1.15rem; }
+    .service-card p { max-width: 860px; margin-bottom: 0; color: var(--body); font-size: 1rem; }
+    .brand-row { display: flex; justify-content: flex-end; margin-top: 20px; }
+    .brand-row img { width: 154px; padding: 12px 16px; border-radius: 12px; background: var(--navy); }
 
     @media (max-width: 1023px) {
       .section { padding: 68px 0; }
@@ -155,7 +155,8 @@
       .hero-cta { width: 100%; padding: 14px 18px; }
       .meeting-panel { padding: 32px 22px; border-radius: 24px; }
       .meeting-button { width: 100%; padding: 15px 20px; font-size: 1rem; }
-      .about-panel { padding: 32px 22px; border-radius: 24px 24px 0 0; }
+      .about-panel { padding: 28px 22px; border-radius: 20px; }
+      .about-panel h2 { font-size: 1.55rem; }
       .service-card { padding: 22px; }
     }
   </style>
