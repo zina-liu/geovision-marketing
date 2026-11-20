@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Closer to Your Market | GeoVision 2026 Trade Show Highlights</title>
+  <meta name="description" content="A look back at the solutions you explored with GeoVision at trade shows across the Americas, Europe, and Asia-Pacific in 2026.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Closer to Your Market | GeoVision 2026 Trade Show Highlights">
+  <meta property="og:description" content="A look back at the solutions you explored with GeoVision at trade shows across the Americas, Europe, and Asia-Pacific in 2026.">
+  <meta property="og:image" content="https://zina-liu.github.io/geovision-marketing/trade-show-recap/assets/hero-isc-west@2x.jpg">
+  <meta property="og:url" content="https://zina-liu.github.io/geovision-marketing/trade-show-recap/index-dark.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a2148;
+      --navy-2: #0f2c5c;
+      --blue: #0d5bd7;
+      --blue-soft: #e3eefb;
+      --red: #e1251b;
+      --page: #f1f5fa;
+      --card: #ffffff;
+      --text: #33475b;
+      --muted: #5b6b7c;
+      --line: #dbe4ef;
+      --max: 760px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, .lead { text-wrap: balance; }
+    .shell { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+
+    /* section heading */
+    .heading { text-align: center; }
+    .heading h2 {
+      color: var(--navy);
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -.015em;
+    }
+    .heading p { max-width: 560px; margin: 12px auto 0; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.1rem); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(26px, 4vw, 40px);
+    }
+    .section { padding: clamp(26px, 4vw, 44px) 0; }
+
+    /* hero */
+    .hero { background: var(--navy); color: #fff; padding: clamp(32px, 5vw, 58px) 0; }
+    .hero .shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+    .hero .logo { width: 132px; margin-bottom: 30px; }
+    .hero h1 {
+      font-size: clamp(2.15rem, 4.2vw, 2.65rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+    .hero h1 { margin-bottom: 20px; }
+    .hero p { color: #d6e2f3; font-size: clamp(1.02rem, 1.5vw, 1.12rem); line-height: 1.6; }
+    .hero-photo { border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px rgba(0, 0, 0, .3); }
+    .hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+    /* map */
+    .map-wrap { position: relative; margin-top: 28px; }
+    .map-wrap > img { width: 100%; }
+    .city {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 0;
+      height: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      transition: opacity .2s;
+    }
+    .city .dot {
+      position: absolute;
+      left: -7px;
+      top: -7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--navy);
+      box-shadow: 0 0 0 2.5px #fff, 0 2px 6px rgba(0, 0, 0, .3);
+      transition: transform .2s;
+    }
+    .city .name {
+      position: absolute;
+      white-space: nowrap;
+      color: var(--navy);
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 3px 5px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .85);
+    }
+    .city[data-pos="left"] .name { right: 11px; top: -9px; }
+    .city[data-pos="right"] .name { left: 11px; top: -9px; }
+    .city[data-pos="above"] .name { left: 50%; bottom: 11px; transform: translateX(-50%); }
+    .city[data-pos="below"] .name { left: 50%; top: 11px; transform: translateX(-50%); }
+    .city[data-pos="above-left"] .name { right: 6px; bottom: 9px; }
+    .city[data-pos="above-right"] .name { left: 6px; bottom: 9px; }
+    .city[data-pos="below-left"] .name { right: 6px; top: 9px; }
+    .city[data-pos="below-right"] .name { left: 6px; top: 9px; }
+    .cluster {
+      display: none;
+      position: absolute;
+      white-space: nowrap;
+      color: var(--navy);
+      font-weight: 600;
+      line-height: 1;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .85);
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .cluster.on { color: var(--red); }
+    .city::before { content: ""; position: absolute; left: -13px; top: -13px; width: 26px; height: 26px; border-radius: 50%; }
+    .city:focus-visible { outline: none; }
+    .city:focus-visible .dot { box-shadow: 0 0 0 2.5px #fff, 0 0 0 5px var(--blue); }
+
+    .city.on { z-index: 3; }
+    .city.on .dot { background: var(--red); transform: scale(1.3); }
+    .city.on .name { color: var(--red); }
+    .city.on .dot::after {
+      content: "";
+      position: absolute;
+      inset: -9px;
+      border-radius: 50%;
+      border: 3px solid var(--red);
+      animation: pulse 1.2s ease-out infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(.7); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .city.on .dot::after { animation: none; opacity: .6; }
+      .city, .city .dot { transition: none; }
+    }
+
+    /* solutions */
+    .solutions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 30px; }
+    .solution {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #f8fbfe;
+    }
+    .solution .icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+    .solution .icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .solution h3 { color: var(--navy); font-size: 1.05rem; font-weight: 700; line-height: 1.25; }
+    .solution p { margin-top: 4px; color: var(--muted); font-size: 1rem; line-height: 1.45; }
+
+    /* regions */
+    .region h2 { color: var(--navy); font-size: clamp(1.6rem, 3vw, 2.05rem); font-weight: 700; line-height: 1.15; letter-spacing: -.015em; }
+    .region .cities { margin-top: 10px; color: var(--blue); font-size: .95rem; font-weight: 600; letter-spacing: .01em; }
+    .region .lead { margin-top: 22px; color: var(--navy); font-size: clamp(1.15rem, 2vw, 1.3rem); font-weight: 700; line-height: 1.35; }
+    .region .support { margin-top: 8px; color: var(--text); font-size: clamp(1rem, 1.4vw, 1.08rem); }
+    .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 290px)); gap: 16px; margin-top: 26px; }
+    .photos figure { margin: 0; }
+    .photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+    .photos figcaption { margin-top: 8px; color: var(--muted); font-size: .95rem; font-weight: 500; }
+    .stack { display: grid; gap: clamp(18px, 3vw, 26px); }
+
+    /* closing */
+    .closing { background: var(--navy); color: #fff; padding: clamp(36px, 5vw, 58px) 0; }
+    .closing .shell { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: center; }
+    .closing h2 { font-size: clamp(1.75rem, 3.2vw, 2.25rem); font-weight: 800; line-height: 1.12; letter-spacing: -.02em; }
+    .closing h2 { margin-bottom: 18px; }
+    .closing p { color: #d6e2f3; font-size: clamp(1.02rem, 1.5vw, 1.12rem); }
+    .closing .thanks { margin-top: 22px; color: #9fb6d6; font-size: 1rem; font-style: italic; }
+    .closing-photo img { width: 240px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 16px; }
+
+    footer { background: #071733; padding: 22px 0; }
+    footer .shell { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #8ea3c2; font-size: .9rem; }
+    footer img { width: 110px; }
+
+    @media (max-width: 639px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .hero .shell, .closing .shell { grid-template-columns: 1fr; }
+      .hero .logo { margin-bottom: 24px; }
+      .solutions { grid-template-columns: 1fr; }
+      .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .closing-photo { order: 2; }
+      .closing-photo img { width: 100%; max-width: 240px; }
+      .map-wrap { margin: 22px 0 0; }
+      .city .name, .cluster { font-size: 10.5px; padding: 2px 4px; }
+      .city.sm-hide .name {
+        position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden;
+        clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+      }
+      .cluster { display: block; }
+      .map-wrap .city[data-pos-sm="above"] .name { left: 50%; right: auto; bottom: 7px; top: auto; transform: translateX(-50%); }
+      .city[data-pos-sm="below"] .name { left: 50%; right: auto; top: 7px; bottom: auto; transform: translateX(-50%); }
+      .city .dot { width: 10px; height: 10px; left: -5px; top: -5px; box-shadow: 0 0 0 2px #fff, 0 1px 4px rgba(0, 0, 0, .3); }
+      .city[data-pos="left"] .name { right: 8px; top: -8px; }
+      .city[data-pos="right"] .name { left: 8px; top: -8px; }
+      .city[data-pos="above-left"] .name, .city[data-pos="above-right"] .name { bottom: 6px; }
+      .city[data-pos="below-left"] .name, .city[data-pos="below-right"] .name { top: 6px; }
+      .city[data-pos-sm="left"] .name { right: 8px; left: auto; top: -8px; bottom: auto; transform: none; }
+      .city[data-pos-sm="right"] .name { left: 8px; right: auto; top: -8px; bottom: auto; transform: none; }
+      .city[data-pos-sm="below-right"] .name { left: 4px; right: auto; top: 6px; bottom: auto; transform: none; }
+      .city[data-pos-sm="above-right"] .name { left: 4px; right: auto; bottom: 6px; top: auto; transform: none; }
+      .city[data-pos-sm="above-left"] .name { right: 4px; left: auto; bottom: 6px; top: auto; transform: none; }
+      .city[data-pos-sm="below-left"] .name { right: 4px; left: auto; top: 6px; bottom: auto; transform: none; }
+    }
+
+    /* ===== modern refresh (Mailbox-inspired) ===== */
+    :root { --page: #f3f6fa; --hl-dark: #6ea8ff; }
+    .hl { color: var(--blue); }
+    .end { color: var(--red); }
+    .card { border: 0; box-shadow: 0 1px 2px rgba(10, 33, 72, .05); }
+    .heading h2, .region h2 { font-weight: 650; letter-spacing: -.02em; }
+
+    /* hero: light, tilted photo with dot pattern */
+    .hero { background: #ffffff; color: var(--navy); padding: clamp(36px, 6vw, 72px) 0 clamp(30px, 5vw, 56px); }
+    .hero h1 { font-weight: 700; letter-spacing: -.03em; }
+    .hero p { color: var(--text); }
+    .hero-media { position: relative; }
+    .hero-photo { position: relative; border-radius: 6px; transform: rotate(2deg); box-shadow: 0 20px 40px rgba(10, 33, 72, .18); }
+
+    /* map & solutions sit directly on the page */
+    .bare { padding: clamp(26px, 4vw, 44px) 0; }
+    .solutions .solution { background: var(--card); border: 0; box-shadow: 0 1px 2px rgba(10, 33, 72, .05); }
+    .solution .icon { background: var(--blue-soft); border-radius: 50%; color: var(--navy); }
+    .solution .icon .ac { stroke: var(--blue); }
+
+    .photos img { border-radius: 6px; }
+
+    /* closing: slanted dark panel with offset outline, photo overlapping */
+    .closing { background: var(--page); color: #fff; padding: clamp(44px, 6vw, 72px) 0 clamp(52px, 7vw, 84px); }
+    .closing .shell { display: block; }
+    .closing-wrap { position: relative; }
+    .closing-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--blue);
+      transform: translate(12px, -12px) skewY(-2deg);
+    }
+    .closing-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 36px;
+      align-items: center;
+      padding: clamp(28px, 4vw, 44px);
+      background: var(--navy);
+      transform: skewY(-2deg);
+    }
+    .closing-panel > * { transform: skewY(2deg); }
+    .closing h2 .hl { color: var(--hl-dark); }
+    .closing-photo { margin: -64px 0 -20px; }
+    .closing-photo img { width: 200px; border-radius: 6px; box-shadow: 0 16px 34px rgba(0, 0, 0, .3); }
+
+    @media (max-width: 639px) {
+      .hero-media { margin: 10px 8px 0 18px; }
+      .closing-panel { grid-template-columns: 1fr; gap: 22px; }
+      .closing-photo { order: 0; margin: -56px 0 0; }
+      .closing-photo img { width: 160px; }
+    }
+
+    /* find us in 2027 */
+    .upcoming-title { color: var(--navy); font-size: clamp(1.6rem, 3vw, 2.05rem); font-weight: 650; line-height: 1.15; letter-spacing: -.02em; }
+    .events { margin: 18px 0 0; padding: 0; list-style: none; }
+    .events li {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 16px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .events .when { color: var(--blue); font-weight: 700; white-space: nowrap; }
+    .events .what b { display: block; color: var(--navy); font-weight: 600; line-height: 1.3; }
+    .events .what span { display: block; margin-top: 2px; color: var(--muted); font-size: .95rem; }
+    @media (max-width: 639px) {
+      .events li { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    /* ===== dark theme (GeoVision spotlight style) ===== */
+    :root {
+      --page: #141518;
+      --card: #222328;
+      --line: rgba(255, 255, 255, .1);
+      --text: #c9ccd2;
+      --muted: #a3a8b1;
+      --head: #f4f5f7;
+      --soft: #8f949d;
+    }
+    body {
+      background:
+        radial-gradient(1100px 600px at 15% -5%, rgba(255, 255, 255, .07), transparent 60%),
+        radial-gradient(900px 600px at 95% 35%, rgba(255, 255, 255, .045), transparent 60%),
+        radial-gradient(900px 700px at 10% 85%, rgba(255, 255, 255, .04), transparent 60%),
+        var(--page);
+      color: var(--text);
+    }
+    .hl, .closing h2 .hl { color: var(--soft); }
+    .card { background: var(--card); border: 1px solid var(--line); box-shadow: none; }
+
+    .hero { background: transparent; color: var(--head); }
+    .hero .logo { width: 132px; }
+    .hero p { color: var(--text); }
+    .hero-photo { box-shadow: 0 24px 50px rgba(0, 0, 0, .55); }
+
+    .heading h2, .region h2, .upcoming-title { color: var(--head); }
+    .heading p { color: var(--muted); }
+
+    /* map */
+    .city .dot { background: #d9dce1; box-shadow: 0 0 0 2.5px var(--page), 0 2px 6px rgba(0, 0, 0, .5); }
+    .city.on .dot { background: var(--red); }
+    .city .name, .cluster { color: #e8eaee; background: rgba(20, 21, 24, .82); }
+    .city.on .name, .cluster.on { color: #ff6b61; }
+
+    /* solutions */
+    .solutions .solution { background: var(--card); border: 1px solid var(--line); box-shadow: none; }
+    .solution .icon { background: rgba(255, 255, 255, .06); color: #e8eaee; }
+    .solution .icon .ac { stroke: var(--soft); }
+    .solution h3 { color: var(--head); }
+    .solution p { color: var(--muted); }
+
+    /* regions */
+    .region .cities {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 3px 9px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 5px;
+      color: var(--text);
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+    .region .lead { color: var(--head); }
+    .region .support { color: var(--text); }
+    .photos figcaption { color: var(--muted); }
+
+    /* closing */
+    .closing { background: transparent; }
+    .closing-wrap::before { border-color: rgba(255, 255, 255, .22); }
+    .closing-panel { background: #26272d; border: 1px solid var(--line); }
+    .closing h2 { color: var(--head); }
+    .closing p { color: var(--text); }
+    .closing .thanks { color: var(--muted); }
+
+    /* find us */
+    .events li { border-top-color: var(--line); }
+    .events .when { color: var(--head); }
+    .events .what b { color: var(--head); }
+    .events .what span { color: var(--muted); }
+
+    footer { background: #0d0e10; }
+    footer .shell { color: #8f949d; }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- 01 Hero -->
+    <section class="hero" id="hero">
+      <div class="shell">
+        <div class="hero-copy">
+          <img class="logo" src="assets/geovision-logo-white.png" width="270" height="96" alt="GeoVision">
+          <h1>Closer to <span class="hl">Your Market</span><span class="end">.</span></h1>
+          <p>Throughout 2026, we brought GeoVision's latest security solutions to the shows where you work, so you could see them in action, close to home.</p>
+        </div>
+        <div class="hero-media"><div class="hero-photo">
+          <img src="assets/hero-isc-west.jpg" srcset="assets/hero-isc-west.jpg 1x, assets/hero-isc-west@2x.jpg 2x" width="800" height="600" alt="Visitors at the GeoVision booth at ISC West 2026 in Las Vegas">
+        </div></div>
+      </div>
+    </section>
+
+    <!-- 02 Map -->
+    <section class="bare" id="map">
+      <div class="shell">
+          <div class="heading">
+            <h2>Wherever the Industry Gathered, <span class="hl">We Were There</span><span class="end">.</span></h2>
+          </div>
+          <div class="map-wrap" id="mapWrap">
+            <img src="assets/world-land-dark.svg" width="1000" height="444" alt="World map highlighting the cities where GeoVision exhibited in 2026">
+            <button class="city sm-hide" data-cluster="wc" type="button" style="--x:19.58%;--y:21.54%" data-pos="left" aria-pressed="false"><span class="dot"></span><span class="name">Vancouver</span></button>
+            <button class="city sm-hide on" data-cluster="wc" type="button" style="--x:19.70%;--y:31.07%" data-pos="left" aria-pressed="true"><span class="dot"></span><span class="name">Las Vegas</span></button>
+            <button class="city" type="button" style="--x:22.66%;--y:43.44%" data-pos="right" data-pos-sm="left" aria-pressed="false"><span class="dot"></span><span class="name">Mexico City</span></button>
+            <button class="city sm-hide" data-cluster="na" type="button" style="--x:29.81%;--y:25.59%" data-pos="below-right" aria-pressed="false"><span class="dot"></span><span class="name">Toronto</span></button>
+            <button class="city sm-hide" data-cluster="na" type="button" style="--x:31.45%;--y:24.17%" data-pos="above-right" aria-pressed="false"><span class="dot"></span><span class="name">Laval</span></button>
+            <button class="city sm-hide" data-cluster="eu" type="button" style="--x:50.06%;--y:19.96%" data-pos="above-left" aria-pressed="false"><span class="dot"></span><span class="name">London</span></button>
+            <button class="city sm-hide" data-cluster="eu" type="button" style="--x:50.68%;--y:21.83%" data-pos="below-left" aria-pressed="false"><span class="dot"></span><span class="name">Paris</span></button>
+            <button class="city sm-hide" data-cluster="eu" type="button" style="--x:52.98%;--y:24.99%" data-pos="right" aria-pressed="false"><span class="dot"></span><span class="name">Bologna</span></button>
+            <button class="city" type="button" style="--x:65.20%;--y:39.18%" data-pos="right" data-pos-sm="above" aria-pressed="false"><span class="dot"></span><span class="name">Dubai</span></button>
+            <button class="city sm-hide" data-cluster="as" type="button" style="--x:83.33%;--y:39.31%" data-pos="right" aria-pressed="false"><span class="dot"></span><span class="name">Taipei</span></button>
+            <button class="city sm-hide" data-cluster="as" type="button" style="--x:83.83%;--y:47.00%" data-pos="right" aria-pressed="false"><span class="dot"></span><span class="name">Manila</span></button>
+            <button class="city" type="button" style="--x:90.35%;--y:82.68%" data-pos="left" aria-pressed="false"><span class="dot"></span><span class="name">Sydney</span></button>
+            <span class="cluster on" data-cluster="wc" aria-hidden="true" style="left:0;top:15%;padding:2px 3px;text-align:right;line-height:1.3">Vancouver<br>Las Vegas</span>
+            <span class="cluster" data-cluster="na" aria-hidden="true" style="left:30.9%;top:30.3%">Toronto · Laval</span>
+            <span class="cluster" data-cluster="eu" aria-hidden="true" style="left:35.5%;top:4.5%">London · Paris · Bologna</span>
+            <span class="cluster" data-cluster="as" aria-hidden="true" style="right:18.6%;top:46%">Taipei · Manila</span>
+          </div>
+      </div>
+    </section>
+
+    <!-- 03 Solutions -->
+    <section class="bare" id="solutions">
+      <div class="shell">
+          <div class="heading">
+            <h2>The Solutions <span class="hl">You Asked About Most</span><span class="end">.</span></h2>
+            <p>Across every show, these were the conversations we had most often.</p>
+          </div>
+          <div class="solutions">
+            <div class="solution">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path class="ac" d="M7.5 9.5h6M7.5 12h4"/></svg></div>
+              <div><h3>GV-AI Nano Server</h3><p>Natural language search: just describe what you need</p></div>
+            </div>
+            <div class="solution">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path class="ac" d="m10.5 8.5 4 2-4 2z"/></svg></div>
+              <div><h3>GV-VMS V20</h3><p>Faster, more efficient video investigations</p></div>
+            </div>
+            <div class="solution">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><circle class="ac" cx="12" cy="9" r="2.5"/><path d="M9.5 16h5"/></svg></div>
+              <div><h3>GV-Access Control</h3><p>Access control with video verification</p></div>
+            </div>
+            <div class="solution">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 14a9 9 0 0 1 18 0"/><rect x="8" y="12" width="8" height="6" rx="1.5"/><circle class="ac" cx="12" cy="15" r="1.3"/><path d="M6.2 9.5 4 7.5M17.8 9.5 20 7.5"/></svg></div>
+              <div><h3>Wide-Angle Camera</h3><p>180° coverage without stitching distortion</p></div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- 04-06 Regions -->
+    <section class="section" id="regions" style="padding-top:0">
+      <div class="shell stack">
+        <article class="card region">
+          <h2>The Americas<span class="end">.</span></h2>
+          <p class="cities">Las Vegas · Mexico City · Vancouver · Laval · Toronto</p>
+          <p class="lead">Natural language search: the most-tried feature at our booth.</p>
+          <p class="support">Visitors typed everyday phrases like "people carrying knives" and quickly found the matching footage.</p>
+          <div class="photos">
+            <figure>
+              <img src="assets/americas-las-vegas.jpg" srcset="assets/americas-las-vegas.jpg 1x, assets/americas-las-vegas@2x.jpg 2x" width="290" height="218" alt="Visitors at the GeoVision demo wall at ISC West in Las Vegas" loading="lazy">
+              <figcaption>Las Vegas, USA</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/americas-mexico-city.jpg" srcset="assets/americas-mexico-city.jpg 1x, assets/americas-mexico-city@2x.jpg 2x" width="290" height="218" alt="A visitor talking with the GeoVision team at Expo Seguridad in Mexico City" loading="lazy">
+              <figcaption>Mexico City, Mexico</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="card region">
+          <h2>Europe<span class="end">.</span></h2>
+          <p class="cities">London · Bologna · Paris</p>
+          <p class="lead">From field operations to centralized control.</p>
+          <p class="support">Visitors saw body-worn cameras send SOS alerts and talk live with the control room, while GV-Control Center brought every site into one view.</p>
+          <div class="photos">
+            <figure>
+              <img src="assets/europe-bologna.jpg" srcset="assets/europe-bologna.jpg 1x, assets/europe-bologna@2x.jpg 2x" width="290" height="218" alt="Visitors in discussion at the GeoVision partner booth at SAIE in Bologna" loading="lazy">
+              <figcaption>Bologna, Italy</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/europe-paris.jpg" srcset="assets/europe-paris.jpg 1x, assets/europe-paris@2x.jpg 2x" width="290" height="218" alt="The GeoVision booth at Expoprotection in Paris" loading="lazy">
+              <figcaption>Paris, France</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="card region">
+          <h2>Asia-Pacific<span class="end">.</span></h2>
+          <p class="cities">Manila · Taipei · Sydney</p>
+          <p class="lead">Manage every site from anywhere.</p>
+          <p class="support">We showed how GV-Cloud brings video, access control, and secure remote access together in one cloud platform.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 07 Closing -->
+    <section class="closing" id="closing">
+      <div class="shell">
+        <div class="closing-wrap">
+          <div class="closing-panel">
+            <div class="closing-photo">
+              <img src="assets/closing-visitors.jpg" srcset="assets/closing-visitors.jpg 1x, assets/closing-visitors@2x.jpg 2x" width="240" height="320" alt="Visitors talking with the GeoVision team at the booth" loading="lazy">
+            </div>
+            <div>
+              <h2>Coming to Your Market Again in <span class="hl">2027</span><span class="end">.</span></h2>
+              <p>Next year, we'll bring even more new solutions to the shows where you work. We hope to see you there.</p>
+              <p class="thanks">Thank you for visiting us in 2026.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Find us in 2027 -->
+    <section class="bare" id="upcoming" style="padding-top:0">
+      <div class="shell">
+        <div class="card">
+          <h2 class="upcoming-title">Find Us in 2027<span class="end">.</span></h2>
+          <ul class="events">
+            <li>
+              <span class="when">Jan 12–14</span>
+              <span class="what"><b>Intersec Global</b><span>Dubai, UAE · Booth 2-E34</span></span>
+            </li>
+            <li>
+              <span class="when">Apr 27–29</span>
+              <span class="what"><b>The Security Event Europe</b><span>Birmingham, UK · Booth 5/K40</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <img src="assets/geovision-logo-white.png" alt="GeoVision">
+      <span>© 2026 GeoVision Inc.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var wrap = document.getElementById('mapWrap');
+      var cities = wrap.querySelectorAll('.city');
+      function select(city) {
+        cities.forEach(function (c) { c.classList.remove('on'); c.setAttribute('aria-pressed', 'false'); });
+        wrap.querySelectorAll('.cluster').forEach(function (k) { k.classList.remove('on'); });
+        city.classList.add('on');
+        city.setAttribute('aria-pressed', 'true');
+        var k = city.dataset.cluster && wrap.querySelector('.cluster[data-cluster="' + city.dataset.cluster + '"]');
+        if (k) k.classList.add('on');
+      }
+      cities.forEach(function (city) {
+        city.addEventListener('click', function () { select(city); });
+        city.addEventListener('mouseenter', function () { select(city); });
+        city.addEventListener('focus', function () { select(city); });
+      });
+      // mobile merged labels: each tap moves to the next city in that group
+      wrap.querySelectorAll('.cluster').forEach(function (k) {
+        k.addEventListener('click', function () {
+          var group = [].slice.call(wrap.querySelectorAll('.city[data-cluster="' + k.dataset.cluster + '"]'));
+          var i = group.findIndex(function (c) { return c.classList.contains('on'); });
+          select(group[(i + 1) % group.length]);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
